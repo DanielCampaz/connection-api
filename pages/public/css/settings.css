@@ -1,0 +1,76 @@
+.connection_api .titles {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.connection_api.others_apis .cards {
+    width: 600px;
+    display: flex;
+    overflow: scroll;
+}
+
+.connection_api.others_apis .cards .connection_api.card {
+    background: var(--color-gradient-principal);
+    border-radius: 15px;
+    padding: 12px;
+    margin: 6px;
+    color: #e3e3e3;
+    font-weight: normal;
+}
+
+.connection_api.others_apis .cards .connection_api.card .header h1 {
+    color: #f1f0f0;
+}
+
+.connection_api.others_apis .cards .connection_api.card .body h4 {
+    color: #dddddd;
+}
+
+.connection_api.others_apis .cards .connection_api.card .footer a {
+    color: #f1f0f0;
+    text-decoration: none;
+}
+
+.connection_api.others_apis .cards .connection_api.card .footer button {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-family: inherit;
+    border-radius: 15px;
+    background: var(--color-white);
+    cursor: pointer;
+    border: #ffffff16;
+    padding: 4px;
+}
+
+.connection_api.others_apis .cards .connection_api.card .footer button {
+    margin: 5px;
+    display: block;
+}
+
+.connection_api.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.connection_api.form form {
+    margin-top: 15px;
+}
+
+.connection_api.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.connection_api.content * {
+    margin: 3px 5px;
+}
+
+.connection_api.request.guide{
+    width: 600px;
+    text-align: center;
+}

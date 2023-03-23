@@ -1,0 +1,19 @@
+.connection_api.nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.connection_api.nav img{
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+
+.connection_api.nav ul {
+    display: flex;
+}
+
+.connection_api.nav ul li {
+    margin: 0 5px;
+}
