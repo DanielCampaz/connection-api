@@ -17,6 +17,10 @@ Author URI: {defenir}
 
 function Active()
 {
+    $config_path = ABSPATH . 'wp-config.php';
+    $config_content = file_get_contents($config_path);
+    $new_config_content = str_replace("/* That's all, stop editing! Happy blogging. */", "define('DISABLE_WP_CRON', true);\n\n/* That's all, stop editing! Happy blogging. */", $config_content);
+    file_put_contents($config_path, $new_config_content);
 }
 
 function Deactivate()
@@ -66,4 +70,14 @@ function PagePrincipal()
 {
     $page = require(plugin_dir_path(__FILE__) . 'pages/main.php');
     return $page;
+}
+
+
+/* Funciones Programadas */
+add_action( 'update_api_hook', 'update_apis' );
+wp_schedule_event( time(), 'hourly', 'update_api_hook' );
+
+// Definir la función 'mi_funcion'
+function update_apis() {
+  // Código que quieres ejecutar cada hora
 }

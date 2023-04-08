@@ -9,7 +9,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 //TODO: Previews of urls, pass num endpoints to settings
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,14 +25,13 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 <body id="body_plugin">
     <?php require_once dirname(__FILE__) . '\components\navbar.php'; ?>
     <main class="connection_api" id="main">
-        <div class="connection_api todo" style="display: none;" >
+        <div class="connection_api todo content" >
             <?php require_once dirname(__FILE__) . '\todo.php'; ?>
         </div>
-        <div class="connection_api request">
+        <div class="connection_api request content" style="display: none;">
             <?php require_once dirname(__FILE__) . '\request.php'; ?>
         </div>
-        <div></div>
-        <div class="connection_api settings" style="display: none;" >
+        <div class="connection_api settings  content" style="display: none;">
             <?php require_once dirname(__FILE__) . '\settings.php'; ?>
         </div>
     </main>

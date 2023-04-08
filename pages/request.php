@@ -2,7 +2,7 @@
 require_once dirname(__FILE__, 2) . '\const\const.php';
 
 
-?>
+?> 
 <div>
     <div class="connection_api titles">
         <h1 class="connection_api request title"><?php echo $NAME_APPLICATION_REQUEST ?></h1>
@@ -16,16 +16,16 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
             for ($i = 0; $i < 10; $i++) {
             ?>
                 <div class="connection_api card">
-                    <div class="header">
+                    <div class="header" style="margin: 10px">
                         <h1>Name Api</h1>
                     </div>
-                    <div class="body">
+                    <div class="body" style="margin: 10px">
                         <h4>Session?: True</h4>
                         <h4>Refresh Token: 10 HRS</h4>
                         <h4>Api Key?: True</h4>
                         <h4>Api Key Value: EacnE3fo35vm1313#cvlk</h4>
                     </div>
-                    <div class="footer">
+                    <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
                         <button onclick="editInfoS(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51' )">Edit Info</button>
@@ -85,7 +85,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                 <div class="connection_api content">
                     <div title="Your Api need Api Key?">
                         <label class="content-input" for="api_key_request_edit">
-                            <input disabled type="checkbox" name="api_key_request_edit" id="api_key_request_edit" value="Api Key_request_edit"> Api Key?
+                            <input disabled type="checkbox" name="api_key_request_edit" id="api_key_request_edit"> Api Key?
                             <i></i>
                         </label>
                     </div>
@@ -96,7 +96,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                     </div>
                 </div>
         </div>
-            <form action="" method="post" style="display: flex; align-items: center; flex-direction: column;">
+            <!-- <form action="" method="post" style="display: flex; align-items: center; flex-direction: column;">
                 <div class="connection_api content">
                     <div>
                         <label for="endpoints_api_request_edit">Endpoints Count: </label>
@@ -105,30 +105,12 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                 </div>
                 <div class="connection_api properties" style="width: 600px; display: flex; flex-wrap: wrap;"></div>
                 <input class="connection_api btn" type="submit" value="Save">
-            </form>
+            </form> -->
         </div>
     </div>
 </div>
 <script>
-    document.querySelector("#endpoints_api_request_edit").addEventListener("change", (event) => {
-        let count = document.querySelector("#endpoints_api_request_edit").value;
-        let containerPrincipal = document.querySelector(".connection_api.properties")
-        //let baseUrl = document.querySelector("#url_api_base_request_edit").value
-
-        let elements = "";
-        for (let index = 0; index < count; index++) {
-            elements += `
-                    <div style="margin:5px;">
-                        <label for="endpoints_api_request_edit_src_${index+1}" style="margin:5px;">
-                            Endpoint ${index+1}
-                        </label>
-                        <input type="text" name="endpoints_api_request_edit_src_${index+1}" id="endpoints_api_request_edit_src_${index+1}">
-                    </div>`
-        }
-
-        containerPrincipal.innerHTML = elements
-
-    })
+    
 
     function editInfoS(id, nameapi, baseurl, session, tokentime, email, password, endpoint, apikey, apikeynum) {
         let NameApi = document.querySelector("#name_api_request_edit")

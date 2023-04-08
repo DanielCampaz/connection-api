@@ -12,8 +12,17 @@
     <ul>
         <?php
             foreach($LIST_NAV as $l){
+                $class;
+                if($l === "To Do"){
+                    $class = "todo";
+                }else if($l === "Request"){
+                    $class = "request";
+                }
+                else if($l === "Settings"){
+                    $class = "settings";
+                }
                 ?>
-                    <li class="link connection_api btn"><h1><?php echo $l ?></h1></li>
+                    <li class="link connection_api btn <?php echo $class ?>"><h1><?php echo $l ?></h1></li>
                 <?php
             }
         ?>
