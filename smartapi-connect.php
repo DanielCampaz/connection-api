@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Connection Api
+Plugin Name: SmartAPI Connect
 Plugin URI: {defenir}
 Description: Plugin que grafica en base de de 2 entradas a una tabla
 Version: 1.0.0

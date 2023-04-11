@@ -179,10 +179,10 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
 
         if (el === "post_category") {
             optionSelect = `<option value="string">String</option><option value="arrayString">Array String</option>`
-        }else{
+        } else {
             optionSelect = `<option value="string">String</option><option value="number">Number</option><option value="bool">Boolean</option><option value="imgbool">Image</option><option value="arrayInt">Array Int</option><option value="arrayString">Array String</option><option value="arrayBoolean">Array Boolean</option><option value="arrayImage">Array Image</option>`
         }
-        
+
 
         document.querySelector(`#input_number_types_${el}`).addEventListener("change", (e) => {
             let number = e.target.value
@@ -207,23 +207,23 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
             document.querySelector(`.multiples_json_properties_configurations_${el}`).innerHTML = addElements
         })
     })
-    
+
     let countPostTypeArrow = 0
     postTypeAttributes.forEach(elem => {
 
         document.querySelector(`.material-icons.arrowX.despla.${elem}`).addEventListener("click", (e) => {
             if (countPostTypeArrow > 1) {
-            countPostTypeArrow = 0
-        }
-        if (countPostTypeArrow == 0) {
-            document.querySelector(`.content.postype.config.arrow_${elem}`).style.display = 'block'
-            e.target.innerHTML = "keyboard_arrow_down"
-        } else {
-            document.querySelector(`.content.postype.config.arrow_${elem}`).style.display = 'none'
-            e.target.innerHTML = "keyboard_arrow_right"
-        }
-        countPostTypeArrow++
-        console.log(countPostTypeArrow)
+                countPostTypeArrow = 0
+            }
+            if (countPostTypeArrow == 0) {
+                document.querySelector(`.content.postype.config.arrow_${elem}`).style.display = 'block'
+                e.target.innerHTML = "keyboard_arrow_down"
+            } else {
+                document.querySelector(`.content.postype.config.arrow_${elem}`).style.display = 'none'
+                e.target.innerHTML = "keyboard_arrow_right"
+            }
+            countPostTypeArrow++
+            console.log(countPostTypeArrow)
         })
     })
 </script>
@@ -236,160 +236,166 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
     i.material-icons.arrowX.despla:hover {
         cursor: pointer;
     }
+
     /* Estilos para el contenedor principal */
-.query {
-    background-color: var(--color-background);
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100px;
-  }
-  
-  /* Estilos para el título */
-  .query h3 {
-    font-size: 24px;
-    margin: 0;
-    color: var(--color-primary);
-  }
-  
-  /* Estilos para el contenedor de acción */
-  .action {
-    margin-top: 10px;
-    background-color: var(--color-white);
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Estilos para el selector de acción */
-  #actionTodoEndpoint {
-    font-size: 18px;
-    padding: 5px;
-    border: none;
-    border-radius: 3px;
-    background: var(--color-gradient-principal);
-    color: var(--color-white);
-    cursor: pointer;
-  }
-  
-  /* Estilos para la opción deshabilitada */
-  #actionTodoEndpoint option {
-    color: gray;
-  }
-  #actionTodoEndpoint option[disabled] {
-    color: var(--color-primary);
-  }
-  
-  /* Estilos para los botones */
-  .button-primary {
-    background-color: var(--color-primary-buttons);
-    color: var(--color-white);
-  }
-  
-  .button-secondary {
-    background-color: var(--color-secondary-buttons);
-    color: var(--color-white);
-  }
-  
-  .button-primary:hover, .button-secondary:hover {
-    background-color: var(--color-hover-buttons);
-  }
+    .query {
+        background-color: var(--color-background);
+        padding: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100px;
+    }
 
-.posttype.json form{
-    width: 693px;
-}
-/* Comment Status */
-/* Estilos para el contenedor principal */
-.postype.config {
-  background-color: var(--color-background);
-  padding: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: auto;
-  width: 100%;
-}
+    /* Estilos para el título */
+    .query h3 {
+        font-size: 24px;
+        margin: 0;
+        color: var(--color-primary);
+    }
 
-/* Estilos para el título */
-.postype.config h2 {
-  font-size: 24px;
-  margin: 0;
-  color: var(--color-primary);
-}
+    /* Estilos para el contenedor de acción */
+    .action {
+        margin-top: 10px;
+        background-color: var(--color-white);
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-/* Estilos para la descripción */
-.postype.config h3 {
-  font-size: 16px;
-  margin: 0;
-  color: var(--color-secondary);
-}
+    /* Estilos para el selector de acción */
+    #actionTodoEndpoint {
+        font-size: 18px;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        background: var(--color-gradient-principal);
+        color: var(--color-white);
+        cursor: pointer;
+    }
 
-/* Estilos para el contenido */
-.postype.config p {
-  font-size: 16px;
-  margin: 0;
-  color: black;
-}
+    /* Estilos para la opción deshabilitada */
+    #actionTodoEndpoint option {
+        color: gray;
+    }
 
-/* Estilos para el contenedor de configuración */
-.postype.config {
-  background-color: var(--color-white);
-  padding: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-}
+    #actionTodoEndpoint option[disabled] {
+        color: var(--color-primary);
+    }
 
-/* Estilos para el contenedor de configuración */
-.postype.config h2 {
-  font-size: 20px;
-  margin: 0;
-  color: var(--color-primary);
-  margin-right: 10px;
-}
+    /* Estilos para los botones */
+    .button-primary {
+        background-color: var(--color-primary-buttons);
+        color: var(--color-white);
+    }
 
-/* Estilos para el contenedor de configuración */
-.postype.config p {
-  font-size: 18px;
-  margin: 0;
-  color: black;
-}
+    .button-secondary {
+        background-color: var(--color-secondary-buttons);
+        color: var(--color-white);
+    }
 
-/* Estilos para el input */
-.postype.config input {
-  font-size: 16px;
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-  background: var(--color-gradient-principal);
-  color: var(--color-white);
-  cursor: pointer;
-}
+    .button-primary:hover,
+    .button-secondary:hover {
+        background-color: var(--color-hover-buttons);
+    }
 
-/* Estilos para el botón de guardar */
-.postype.config button {
-  font-size: 16px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 3px;
-  background-color: var(--color-primary-buttons);
-  color: var(--color-white);
-  cursor: pointer;
-}
+    .posttype.json form {
+        width: 693px;
+    }
 
-/* Estilos para el botón de guardar al pasar el cursor */
-.postype.config button:hover {
-  background-color: var(--color-hover-buttons);
-}
-/* Comment Status */
+    /* Comment Status */
+    /* Estilos para el contenedor principal */
+    .postype.config {
+        background-color: var(--color-background);
+        padding: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
 
+
+
+    /* Estilos para el título */
+    .postype.config h2 {
+        font-size: 24px;
+        margin: 0;
+        color: var(--color-primary);
+    }
+
+    /* Estilos para la descripción */
+    .postype.config h3 {
+        font-size: 16px;
+        margin: 0;
+        color: var(--color-secondary);
+    }
+
+    /* Estilos para el contenido */
+    .postype.config p {
+        font-size: 16px;
+        margin: 0;
+        color: black;
+    }
+
+    /* Estilos para el contenedor de configuración */
+    .postype.config {
+        background-color: var(--color-white);
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    /* Estilos para el contenedor de configuración */
+    .postype.config h2 {
+        font-size: 20px;
+        margin: 0;
+        color: var(--color-primary);
+        margin-right: 10px;
+    }
+
+    /* Estilos para el contenedor de configuración */
+    .postype.config p {
+        font-size: 18px;
+        margin: 0;
+        color: black;
+    }
+
+    /* Estilos para el input */
+    .postype.config input {
+        font-size: 16px;
+        padding: 5px;
+        border: none;
+        border-radius: 3px;
+        background: var(--color-gradient-principal);
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+    /* Estilos para el botón de guardar */
+    .postype.config button {
+        font-size: 16px;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: var(--color-primary-buttons);
+        color: var(--color-white);
+        cursor: pointer;
+    }
+
+    /* Estilos para el botón de guardar al pasar el cursor */
+    .postype.config button:hover {
+        background-color: var(--color-hover-buttons);
+    }
+
+    /* Comment Status */
 </style>
