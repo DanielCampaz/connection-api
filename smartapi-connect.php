@@ -21,6 +21,7 @@ function Active()
     $config_content = file_get_contents($config_path);
     $new_config_content = str_replace("/* That's all, stop editing! Happy blogging. */", "define('DISABLE_WP_CRON', true);\n\n/* That's all, stop editing! Happy blogging. */", $config_content);
     file_put_contents($config_path, $new_config_content);
+    a();
 }
 
 function Deactivate()
@@ -32,7 +33,9 @@ register_activation_hook(__FILE__, 'Active');
 register_deactivation_hook(__FILE__, 'Deactivate');
 
 /* Function Init Finish */
-
+function a(){
+    print_r("112222");
+}
 /* Menus */
 
 add_action('admin_menu', 'CreateMenus');
