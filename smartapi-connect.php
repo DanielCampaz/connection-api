@@ -41,10 +41,10 @@ add_action('admin_menu', 'CreateMenus');
 function CreateMenus()
 {
     add_menu_page(
-        'Connect Api', //Titulo Pagina
-        'Connect Api', //Titulo Menu
+        'SmartAPI Connect', //Titulo Pagina
+        'SmartAPI Connect', //Titulo Menu
         'manage_options',
-        'connectionapi', //Acceso administradores
+        'smart-api-connect', //Acceso administradores
         'PagePrincipal', //slug
         'dashicons-rest-api', //Direccion De la Imagen   plugin_dir_url(__FILE__).'admin/img/icon.png'
         '1' //Pocision del menu
@@ -72,13 +72,15 @@ function PagePrincipal()
     $page = require(plugin_dir_path(__FILE__) . 'pages/main.php');
     return $page;
 }
+/* Finish Function Open Pages */
 
 
-/* Funciones Programadas */
+/* Scheduled Functions */
 add_action( 'update_api_hook', 'update_apis' );
 wp_schedule_event( time(), 'hourly', 'update_api_hook' );
 
-// Definir la función 'mi_funcion'
+// Defining the function that is called when programming it
 function update_apis() {
-  // Código que quieres ejecutar cada hora
+  // Code you want to run every hour
 }
+/* Finish Scheduled Functions */
