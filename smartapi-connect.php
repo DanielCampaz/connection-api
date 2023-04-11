@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: SmartAPI Connect
-Plugin URI: {defenir}
-Description: Plugin que grafica en base de de 2 entradas a una tabla
+Plugin URI: https://github.com/DanielCampaz/smartapi-connect
+Description: Plugin for the connection with the database that receives a json type response and works according to the user's parameters
 Version: 1.0.0
 Author: Daniel Steven Campaz Ocoro
-Author URI: {defenir}
+Author URI: https://github.com/DanielCampaz
 */
 
 /* Imports */
@@ -21,7 +21,7 @@ function Active()
     $config_content = file_get_contents($config_path);
     $new_config_content = str_replace("/* That's all, stop editing! Happy blogging. */", "define('DISABLE_WP_CRON', true);\n\n/* That's all, stop editing! Happy blogging. */", $config_content);
     file_put_contents($config_path, $new_config_content);
-    a();
+
 }
 
 function Deactivate()
@@ -33,9 +33,7 @@ register_activation_hook(__FILE__, 'Active');
 register_deactivation_hook(__FILE__, 'Deactivate');
 
 /* Function Init Finish */
-function a(){
-    print_r("112222");
-}
+
 /* Menus */
 
 add_action('admin_menu', 'CreateMenus');
