@@ -1,9 +1,11 @@
 <?php
 global $wp;
-$host = home_url( add_query_arg( array(), $wp->request ) );
+$host = home_url( add_query_arg( array(), $wp->request ) ); 
 
-$LINK_BASE_PAGE = $host."/wp-content/plugins/connectionapi/pages";
-$LINK_BASE = $host."/wp-content/plugins/connectionapi";
+$FOLDER_NAME = "smartapi-connect";
+
+$LINK_BASE_PAGE = $host."/wp-content/plugins/".$FOLDER_NAME."/pages";
+$LINK_BASE = $host."/wp-content/plugins/".$FOLDER_NAME;
 
 $NAME_APPLICATION_SETTINGS = "Connection Settings";
 $GUIDE_SETTINGS = "In this section you can configure the endpoint of your API, the login if necessary";

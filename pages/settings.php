@@ -30,7 +30,8 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                     <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="editInfo(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51', 2 )">Edit Info</button>
+                        <!--                       ID      Name Api        Base URL            Session Token-Time        Email                Password       endpoint-session  Api-key?    Api-Key-Value    How-INIT-Session doyouW  HourUpdateTime name-Api-Send  How-T-S-A-K       EndpointList                     -->
+                        <button onclick="editInfo(65465,   'prueba'  ,'https/localhost:5000',   true,     10,     'dscampaz3110@gmail.com', 'daniel2008b',     'auth/login',    true,   '1321casc5efa11e51',       1,         true,       3,          'api-key',        1,           ['acas', 'acasca/asc', 'acsc', 'feres'] )">Edit Info</button>
                     </div>
                 </div>
             <?php
@@ -52,6 +53,19 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                         <input type="text" name="url_api_base" id="url_api_base">
                         <label for="url_api_base">/</label>
                     </div>
+                </div>
+                <div class="connection_api content">
+                    <div title="On = Set time; off = Leave token time;">
+                        <label class="content-input" for="update_config_api_need">
+                            <input type="checkbox" name="update_config_api_need" id="update_config_api_need"> Do you want to configure api config refresh or use token time
+                            <i></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="connection_api content" id="update_config_api_need_content" style="display: none;">
+                    <label for="update_time">Update Time</label>
+                    <input type="number" name="update_time" id="update_time">
+                    <label for="update_time">Hours</label>
                 </div>
                 <div class="connection_api content">
                     <div title="Your Api need Init Session?">
@@ -88,15 +102,15 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                     <div class="connection_api content des emanpas" style="display: none;">
                         <div>
                             <div title="How send Init Session?">
-                                <label for="h_s_t">How send Init Session?: </label>
+                                <label for="h_s_is">How send Init Session?: </label>
                                 <fieldset>
                                     <legend>Select Option</legend>
                                     <label>
-                                        <input type="radio" name="h_s_t_r" value="param"> url param = {url}/{endpoint_login}?email={value}&password={value}
+                                        <input type="radio" name="h_s_is_r" value="param"> url param = {url}/{endpoint_login}?email={value}&password={value}
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="radio" name="h_s_t_r" value="body">
+                                        <input type="radio" name="h_s_is_r" value="body">
                                         body : {
                                         email: {value},
                                         password: {value}
@@ -121,6 +135,24 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                         <i class="material-icons">visibility_off</i>
                     </div>
                 </div>
+                <div class="connection_api content" id="name_attributes" style="display: none;">
+                    <div style="display: flex; align-items: center;">
+                        <label for="api_key_name_attr">Name Attribute Api Key: </label>
+                        <input type="password" name="api_key_name_attr" id="api_key_name_attr">
+                    </div>
+                    <div title="How send Api Key?">
+                        <label for="h_s_ak_r">How to Send Api Key?</label>
+                        <fieldset>
+                            <legend></legend>
+                            <label for="">
+                                <input title="We will send as first parameter" type="radio" name="h_s_ak_r" id="radioUrl" value="url"> Url
+                            </label>
+                            <label for="">
+                                <input type="radio" name="h_s_ak_r" id="radioHeader" value="header"> Header
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
                 <div action="" method="post" style="display: flex; align-items: center; flex-direction: column;">
                     <div class="connection_api content">
                         <div>
@@ -142,6 +174,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                 <input type="hidden" name="id_api_edit" id="id_api_edit">
                 <input type="hidden" name="sessionTrue_api_edit" id="sessionTrue_api_edit" value="true">
                 <input type="hidden" name="apikeyTrue_api_edit" id="apikeyTrue_api_edit" value="true">
+                <input type="hidden" name="doyou" id="doyou" value="true">
                 <div class="connection_api content">
                     <div>
                         <label for="name_api_edit">Name API: </label>
@@ -152,6 +185,19 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                         <input type="text" name="url_api_base_edit" id="url_api_base_edit">
                         <label for="url_api_base_edit">/</label>
                     </div>
+                </div>
+                <div class="connection_api content">
+                    <div title="On = Set time; off = Leave token time;">
+                        <label class="content-input" for="update_config_api_need_edit">
+                            <input type="checkbox" name="update_config_api_need_edit" id="update_config_api_need_edit"> Do you want to configure api config refresh or use token time
+                            <i></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="connection_api content" id="update_config_api_need_content_edit" style="display: none;">
+                    <label for="update_time_edit">Update Time</label>
+                    <input type="number" name="update_time_edit" id="update_time_edit">
+                    <label for="update_time">Hours</label>
                 </div>
                 <div class="connection_api content">
                     <div title="Your Api need Init Session?">
@@ -192,14 +238,14 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                                 <fieldset>
                                     <legend>Select Option</legend>
                                     <label>
-                                        <input type="radio" name="h_s_t_r" id="radioParam" value="param"> url param = {url}/{endpoint_login}?email={value}&password={value}
+                                        <input type="radio" name="h_s_t_r" id="radioParamEdit" value="param"> url param = {url}/{endpoint_login}?email={value}&password={value}
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="radio" name="h_s_t_r" id="radioBody" value="body">
+                                        <input type="radio" name="h_s_t_r" id="radioBodyEdit" value="body">
                                         body : {
-                                            email: {value},
-                                            password: {value}
+                                        email: {value},
+                                        password: {value}
                                         }
                                     </label>
                                 </fieldset>
@@ -221,6 +267,24 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                         <i class="material-icons">remove_red_eye</i>
                     </div>
                 </div>
+                <div class="connection_api content" id="name_attributes_edit" style="display: none;">
+                    <div style="display: flex; align-items: center;">
+                        <label for="api_key_name_attr_edit">Name Attribute Api Key: </label>
+                        <input type="password" name="api_key_name_attr_edit" id="api_key_name_attr_edit">
+                    </div>
+                    <div title="How send Api Key?">
+                        <label for="h_s_ak_r_e">How to Send Api Key?</label>
+                        <fieldset>
+                            <legend></legend>
+                            <label for="">
+                                <input title="We will send as first parameter" type="radio" name="h_s_ak_r_e" id="radioUrlEdit" value="url"> Url
+                            </label>
+                            <label for="">
+                                <input type="radio" name="h_s_ak_r_e" id="radioHeaderEdit" value="header"> Header
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
                 <div action="" method="post" style="display: flex; align-items: center; flex-direction: column;">
                     <div class="connection_api content">
                         <div>
@@ -228,6 +292,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                             <input type="number" name="endpoints_api_edit" id="endpoints_api_edit">
                         </div>
                     </div>
+                    <input type="hidden" name="countEnpointEdit" id="countEnpointEdit" value="0">
                     <div class="connection_api properties2" style="width: 600px; display: flex; flex-wrap: wrap;"></div>
                 </div>
                 <br>
@@ -240,7 +305,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 
 <script>
     document.querySelector("#endpoints_api_edit").addEventListener("change", (event) => {
-        addEndpoint()
+        addEndpoint(true)
     })
 
     document.querySelector("#endpoints_api").addEventListener("change", (event) => {
@@ -252,14 +317,10 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         for (let index = 0; index < count; index++) {
             elements += `
                     <div style="margin:5px;">
-                        <label for="endpoints_api_src_${index+1}" style="margin:5px;">
+                        <label for="endpoints_api_name_${index+1}" style="margin:5px;">
                             Endpoint ${index+1}
                         </label>
-                        <input type="text" name="endpoints_api_src_${index+1}" id="endpoints_api_value_src_${index+1}">
-                        <label for="endpoints_api_value_src_${index+1}" style="margin:5px;">
-                            Value ${index+1}
-                        </label>
-                        <input type="text" name="endpoints_api_value_src_${index+1}" id="endpoints_api_value_src_${index+1}">
+                        <input type="text" title="It can also be: endpoint/example are attached to the base url" name="endpoints_api_name_${index+1}" id="endpoints_api_name_${index+1}">
                     </div>`
         }
 
@@ -267,27 +328,44 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 
     })
 
-    function addEndpoint() {
+    function addEndpoint(t) {
         let count = document.querySelector("#endpoints_api_edit").value;
         let containerPrincipal = document.querySelector(".connection_api.properties2")
         //let baseUrl = document.querySelector("#url_api_base_request_edit").value
+        let elements = ""
 
-        let elements = "";
+        let eCountEndpointEA = parseInt(document.querySelector("#countEnpointEdit").value)
+        let indexInit = 0
+        let inputsA = []
+
+        if(t){
+            if (eCountEndpointEA > 0) {
+    
+                for (let indexE = 0; indexE < eCountEndpointEA; indexE++) {
+                    inputsA.push(document.querySelector(`#endpoints_api_name_edit_${indexE+1}`).value)
+                }
+    
+            }
+        }
+
         for (let index = 0; index < count; index++) {
             elements += `
-                    <div style="margin:5px;">
-                        <label for="endpoints_api_edit_src_${index+1}" style="margin:5px;">
-                            Endpoint ${index+1}
-                        </label>
-                        <input type="text" name="endpoints_api_edit_src_${index+1}" id="endpoints_api_edit_src_${index+1}">
-                        <label for="endpoints_api_value_edit__src_${index+1}" style="margin:5px;">
-                            Value ${index+1}
-                        </label>
-                        <input type="text" name="endpoints_api_value_edit__src_${index+1}" id="endpoints_api_value_edit__src_${index+1}">
-                    </div>`
+                        <div style="margin:5px;">
+                            <label for="endpoints_api_name_edit_${index+1}" style="margin:5px;">
+                                Endpoint ${index+1}
+                            </label>
+                            <input type="text" title="It can also be: endpoint/example are attached to the base url" name="endpoints_api_name_edit_${index+1}" id="endpoints_api_name_edit_${index+1}" value="">
+                        </div>`
         }
 
         containerPrincipal.innerHTML = elements
+        if(t){
+            if (eCountEndpointEA > 0) {
+                inputsA.forEach((e, indexX) => {
+                    document.querySelector(`#endpoints_api_name_edit_${indexX+1}`).value = e
+                })
+            }
+        }
     }
     const labelUrlSession = document.querySelector("label.endpoint_session")
 
@@ -342,19 +420,22 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
             objectHTMLApiKey.forEach(i => {
                 i.disabled = false
             })
+            document.querySelector("#name_attributes").style.display = "block";
+
         } else {
             objectHTMLApiKey.forEach(i => {
                 i.disabled = true
             })
+            document.querySelector("#name_attributes").style.display = "none";
         }
         countApiKey++
     })
-    
+
     const objectHTMLSessionEdit = [document.querySelector("#refresh_token_edit"), document.querySelector("#endpoint_session_edit"), document.querySelector("#email_credential_api_edit"), document.querySelector("#endpoint_session_edit"), document.querySelector("#password_credential_api_edit")]
     const objectHTMLApiKeyEdit = [document.querySelector("#api_key_text_edit")]
     const objectHTMLSessionDesEdit = [document.querySelector(".connection_api.content.emanpase")]
 
-    function editInfo(id, nameapi, baseurl, session, tokentime, email, password, endpoint, apikey, apikeynum, radiotype) {
+    function editInfo(id, nameapi, baseurl, session, tokentime, email, password, endpoint, apikey, apikeynum, radiotype_sS, doyou, uptime, nameAAK, howTSAK, endpointsList) {
 
         document.querySelector(".connection_api.form.container.edit").style.display = "block"
         document.querySelector(".connection_api.form.container.add").style.display = "none"
@@ -369,6 +450,9 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         let Password = document.querySelector("#password_credential_api_edit")
         let Id = document.querySelector("#id_api_edit")
         let EndpointSession = document.querySelector("input#endpoint_session_edit")
+        let Doyou = document.querySelector("#update_config_api_need_edit")
+        let Uptime = document.querySelector("#update_time_edit")
+        let NameAAK = document.querySelector("#api_key_name_attr_edit")
 
         NameApi.value = nameapi;
         BaseUrl.value = baseurl;
@@ -379,9 +463,18 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         Email.value = email;
         Password.value = password;
         Id.value = id;
-        EndpointSession.value = endpoint
+        EndpointSession.value = endpoint;
+        Doyou.checked = doyou;
+        Uptime.value = uptime;
+        NameAAK.value = nameAAK;
 
-        if(session){
+        if (doyou) {
+            document.querySelector("#update_config_api_need_content_edit").style.display = "block"
+        } else {
+            document.querySelector("#update_config_api_need_content_edit").style.display = "none"
+        }
+
+        if (session) {
             objectHTMLSessionEdit.forEach(i => {
                 i.disabled = false
             })
@@ -389,7 +482,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                 i.style.display = "block"
             })
             document.querySelector("#sessionTrue_api_edit").value = "true"
-        }else{
+        } else {
             objectHTMLSessionEdit.forEach(i => {
                 i.disabled = true
             })
@@ -399,13 +492,13 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
             document.querySelector("#sessionTrue_api_edit").value = "false"
         }
 
-        if(apikey){
+        if (apikey) {
             objectHTMLApiKeyEdit.forEach(i => {
                 i.disabled = false
             })
             document.querySelector("#apikeyTrue_api_edit").value = "true"
 
-        }else{
+        } else {
             objectHTMLApiKeyEdit.forEach(i => {
                 i.disabled = true
             })
@@ -413,27 +506,30 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 
         }
 
-        if(radiotype === 1){
-            document.querySelector("#radioParam").checked = true
-        }else if(radiotype === 2){
-            document.querySelector("#radioBody").checked = true
+        if (radiotype_sS === 1) {
+            document.querySelector("#radioParamEdit").checked = true
+        } else if (radiotype_sS === 2) {
+            document.querySelector("#radioBodyEdit").checked = true
         }
 
-        switch(radiotype){
-            case 1:
-                document.querySelector("#radioParam").checked = true
-                break
-            case 2:
-                console.log("")
-                break
-            default:
-                console.log("noesta")
+        if (howTSAK === 1) {
+            document.querySelector("#radioUrlEdit").checked = true
+        } else if (howTSAK === 2) {
+            document.querySelector("#radioHeaderEdit").checked = true
         }
 
         document.querySelector("label.endpoint_session_edit").innerHTML = baseurl + "/"
 
-        document.querySelector("#endpoints_api_edit").value = 7;
-        addEndpoint()
+        let endpointsC = endpointsList.length
+        let countEndpointEA = document.querySelector("#countEnpointEdit")
+
+        document.querySelector("#endpoints_api_edit").value = endpointsC;
+        countEndpointEA.value = endpointsC
+        addEndpoint(false)
+
+        endpointsList.forEach((e, index) => {
+            document.querySelector(`#endpoints_api_name_edit_${index+1}`).value = e
+        })
 
     }
 
@@ -441,12 +537,12 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         document.querySelector(".connection_api.form.container.add").style.display = "block"
         document.querySelector(".connection_api.form.container.edit").style.display = "none"
     }
-    
+
     /* Add */
-    
+
     let countEditKeyToText = 0
     let countEditPasswordToText = 0
-    
+
     document.querySelector("#api_key_text_edit~i").addEventListener("click", e => {
         if (countEditKeyToText > 1) {
             countEditKeyToText = 0
@@ -474,7 +570,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         }
         countEditPasswordToText++
     })
-    
+
     let countKeyToText = 0
     let countPasswordToText = 0
 
@@ -546,12 +642,12 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         if (countSessionE > 1) {
             countSessionE = 0
         }
-        
+
         let sessionHidden = document.querySelector("#sessionTrue_api_edit")
 
-        if(sessionHidden.value === "true"){
+        if (sessionHidden.value === "true") {
             countSessionE = 1
-        }else{
+        } else {
             countSessionE = 0
         }
 
@@ -581,9 +677,9 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         }
         let apikeySession = document.querySelector("#apikeyTrue_api_edit")
 
-        if(apikeySession.value === "true"){
+        if (apikeySession.value === "true") {
             countApiKeyE = 1
-        }else{
+        } else {
             countApiKeyE = 0
         }
 
@@ -592,13 +688,49 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                 i.disabled = false
             })
             apikeySession.value = "true"
+            document.querySelector("#name_attributes_edit").style.display = "block"
         } else {
             objectHTMLApiKeyEdit.forEach(i => {
                 i.disabled = true
             })
             apikeySession.value = "false"
+            document.querySelector("#name_attributes_edit").style.display = "none"
         }
         countApiKeyE++
+    })
+
+    let countConfigApi = 0
+    let countConfigApi2 = 0
+
+    document.querySelector("#update_config_api_need").addEventListener("change", e => {
+        if (countConfigApi > 1) {
+            countConfigApi = 0
+        }
+        if (countConfigApi === 0) {
+            document.querySelector("#update_config_api_need_content").style.display = "block"
+        } else {
+            document.querySelector("#update_config_api_need_content").style.display = "none"
+        }
+        countConfigApi++
+    })
+
+    document.querySelector("#update_config_api_need_edit").addEventListener("change", e => {
+        if (countConfigApi2 > 1) {
+            countConfigApi2 = 0
+        }
+
+        if (document.querySelector("#update_config_api_need_content_edit").style.display === "block") {
+            countConfigApi2 = 1
+        } else {
+            countConfigApi2 = 0
+        }
+
+        if (countConfigApi2 === 0) {
+            document.querySelector("#update_config_api_need_content_edit").style.display = "block"
+        } else {
+            document.querySelector("#update_config_api_need_content_edit").style.display = "none"
+        }
+        countConfigApi2++
     })
 </script>
 

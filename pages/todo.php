@@ -3,6 +3,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 
 $postElements = ["comment_status", "post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category"];
 
+
 ?>
 
 <div>
@@ -14,7 +15,6 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
         <h1>APIS:</h1>
         <div class="cards">
             <?php
-
             for ($i = 0; $i < 10; $i++) {
             ?>
                 <div class="connection_api card">
@@ -30,8 +30,22 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                     <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="editInfo(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51', 2 )">Edit Info</button>
+                        <button onclick="settingsEndpoints(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51', 2 )">Edit Info</button>
                     </div>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+    <div class="endpoints" style="margin: 15px">
+        <h3>Endpoints:</h3>
+        <div>
+            <?php
+            for ($i = 1; $i <= 50; $i++) {
+            ?>
+                <div title="Press to configure this endpoint '<?php echo $i ?>'">
+                    <button onclick="btnEndpointsEdit(<?php echo $i ?>)"><?php echo $i ?></button>
                 </div>
             <?php
             }
@@ -49,7 +63,7 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                 <option value="Save Image">Save Images</option>
             </select>
         </div>
-        <div class="posttype json">
+        <div class="posttype json" style="display: none;">
             <form action="" method="post">
                 <?php
 
@@ -228,6 +242,18 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
     })
 </script>
 
+<script>
+
+    function btnEndpointsEdit(i){
+        console.log("DaDNALDNALKDN "+i)
+    }
+
+    function settingsEndpoints(){
+        
+    }
+
+</script>
+
 <style>
     i.material-icons.arrowX.despla {
         color: var(--color-secondary);
@@ -398,4 +424,25 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
     }
 
     /* Comment Status */
+</style>
+
+<style>
+    .endpoints > div{
+        width: 710px;
+        display: flex;
+        overflow: scroll;
+    }
+
+    .endpoints > div div button{
+        padding: 15px;
+        background: var(--color-gradient-principal);
+        border-radius: 15px;
+        border-color: transparent;
+        color: white;
+    }
+
+    .endpoints > div div button:hover{
+        cursor: pointer;
+    }
+
 </style>
