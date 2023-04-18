@@ -52,15 +52,29 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
             ?>
         </div>
     </div>
+    <div class="endpoints" style="margin: 15px">
+        <h3>Query's:</h3>
+        <div>
+            <?php
+            for ($i = 1; $i <= 50; $i++) {
+            ?>
+                <div title="Press to configure this endpoint '<?php echo $i ?>'">
+                    <button onclick="btnEndpointsEdit(<?php echo $i ?>)"><?php echo $i ?></button>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
     <div class="connection_api configurateToDoEndpoints">
         <div class="query">
             <h3>{url}/{endpoint}?{query}</h3>
         </div>
         <div class="action">
-            <select name="actionTodoEndpoint" id="actionTodoEndpoint" title="Select To Action">
-                <option disabled>Select Action For Endpoint {endpoint}</option>
-                <option value="Post Type">Post Type</option>
-                <option value="Save Image">Save Images</option>
+            <select name="actionTodoEndpoint" class='selectCSS' id="actionTodoEndpoint" title="Select To Action">
+                <option value="endp">Select Action For Endpoint Endpoint</option>
+                <option value="post-type">Post Type</option>
+                <option value="save-image">Save Images</option>
             </select>
         </div>
         <div class="posttype json" style="display: none;">
@@ -180,6 +194,8 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
             </form>
 
         </div>
+        <div class="image val" style="display: none;">
+        </div>
     </div>
 </div>
 
@@ -252,6 +268,21 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
         
     }
 
+    document.querySelector("#actionTodoEndpoint").addEventListener("change", e => {
+        let select = e.target.value
+
+        console.log(select)
+
+        if(select === "post-type"){
+            document.querySelector(".image.val").style.display = "none"
+            document.querySelector(".posttype.json").style.display = "block"
+        }else if(select === "save-image"){
+            document.querySelector(".posttype.json").style.display = "none"
+            document.querySelector(".image.val").style.display = "block"
+        }
+
+    })
+
 </script>
 
 <style>
@@ -294,7 +325,7 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
     }
 
     /* Estilos para el selector de acción */
-    #actionTodoEndpoint {
+    .selectCSS {
         font-size: 18px;
         padding: 5px;
         border: none;
@@ -305,11 +336,11 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
     }
 
     /* Estilos para la opción deshabilitada */
-    #actionTodoEndpoint option {
+    .selectCSS option {
         color: gray;
     }
 
-    #actionTodoEndpoint option[disabled] {
+    .selectCSS option[disabled] {
         color: var(--color-primary);
     }
 

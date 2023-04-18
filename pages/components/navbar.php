@@ -2,7 +2,7 @@
     require_once dirname(__FILE__, 3) . '\const\const.php';
 
 
-    $LIST_NAV = ["To Do", "Request", "Settings"];
+    $LIST_NAV = ["Settings","Request", "To Do"];
 
     $c = 0;
 

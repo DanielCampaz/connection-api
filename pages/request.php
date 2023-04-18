@@ -2,7 +2,7 @@
 require_once dirname(__FILE__, 2) . '\const\const.php';
 
 
-?> 
+?>
 <div>
     <div class="connection_api titles">
         <h1 class="connection_api request title"><?php echo $NAME_APPLICATION_REQUEST ?></h1>
@@ -28,7 +28,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                     <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="editInfoS(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51' )">Edit Info</button>
+                        <button onclick="addEndpointsQuerys(65465, ['aas', 'Sas/s', 'csca', '<?php echo $i ?>'] )">Edit Info</button>
                     </div>
                 </div>
             <?php
@@ -36,135 +36,126 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
             ?>
         </div>
     </div>
-    <div class="connection_api container edit">
-        <div class="connection_api form add">
-            <h1>Form To Edit Api Properties</h1>
-            <div class="connection_api from_request edit" action="" method="post">
-                <input type="hidden" name="id_api_request_edit" id="id_api_request_edit">
-                <div class="connection_api content">
-                    <div>
-                        <label for="name_api_request_edit">Name API: </label>
-                        <input disabled type="text" name="name_api_request_edit" id="name_api_request_edit">
-                    </div>
-                    <div>
-                        <label for="url_api_base_request_edit">Base Url: </label>
-                        <input disabled type="text" name="url_api_base_request_edit" id="url_api_base_request_edit">
-                        <label for="url_api_base_request_edit">/</label>
-                    </div>
-                </div>
-                <div class="connection_api content">
-                    <div title="Your Api need Init Session?">
-                        <label class="content-input" for="need_session_request_edit">
-                            <input disabled type="checkbox" name="need_session_request_edit" id="need_session_request_edit"> Session?
-                            <i></i>
-                        </label>
-                    </div>
-                    <div title="How often should the token be refreshed?">
-                        <label for="refresh_token_request_edit">Refresh Token: </label>
-                        <input disabled type="number" name="refresh_token_request_edit" id="refresh_token_request_edit">
-                        <label for="refresh_token_request_edit">HRS</label>
-                    </div>
-                </div>
-                <div class="connection_api content">
-                    <div title="Email for access to API">
-                        <label for="email_credential_api_request_edit">Email: </label>
-                        <input disabled type="text" name="email_credential_api_request_edit" id="email_credential_api_request_edit">
-                    </div>
-                    <div title="Password for access to API" style="display: flex; align-items: center;">
-                        <label for="password_credential_api__requestedit">Password: </label>
-                        <input disabled type="password" name="password_credential_api_request_edit" id="password_credential_api_request_edit">
-                        <i class="material-icons">visibility_off</i>
-                    </div>
-                </div>
-                <div class="connection_api content">
-                    <div title="Endpoint for the Session">
-                        <label for="endpoint_session_request_edit" class="endpoint_session_request_edit">Endpoint Session:</label>
-                        <input disabled type="text" name="endpoint_session_request_edit" id="endpoint_session_request_edit">
-                    </div>
-                </div>
-                <div class="connection_api content">
-                    <div title="Your Api need Api Key?">
-                        <label class="content-input" for="api_key_request_edit">
-                            <input disabled type="checkbox" name="api_key_request_edit" id="api_key_request_edit"> Api Key?
-                            <i></i>
-                        </label>
-                    </div>
-                    <div style="display: flex; align-items: center;">
-                        <label for="api_key_text_request_edit">Api Key: </label>
-                        <input disabled type="password" name="api_key_text_request_edit" id="api_key_text_request_edit">
-                        <i class="material-icons">visibility_off</i>
-                    </div>
-                </div>
+    <div class="connection_api">
+        <div class="connection_api endpoints Action" style="display: none;">
+            <h3>Endpoints:</h3>
+            <div></div>
         </div>
-            <!-- <form action="" method="post" style="display: flex; align-items: center; flex-direction: column;">
-                <div class="connection_api content">
-                    <div>
-                        <label for="endpoints_api_request_edit">Endpoints Count: </label>
-                        <input type="number" name="endpoints_api_request_edit" id="endpoints_api_request_edit">
-                    </div>
+    </div>
+    <div class="connection_api">
+        <div class="connection_api endpoints Action querys" style="display: none;">
+            <h3>Query's:</h3>
+            <div></div>
+        </div>
+        <div class="connection_api query add" style="padding: 83px; display:none">
+            <h3>Add Query</h3>
+            <form action="">
+                <input type="hidden" name="query_id" id="query_id">
+                <div class="action">
+                    <select name="selectEndpointDV" id="selectEndpointDV" class='selectCSS' title="Select To Action"></select>
                 </div>
-                <div class="connection_api properties" style="width: 600px; display: flex; flex-wrap: wrap;"></div>
+                <label for="">
+                    Query: <input type="text" name="query_name" id="query_name">
+                </label>
+                <label for="">
+                    Value: <input type="text" name="query_value" id="query_value">
+                </label>
                 <input class="connection_api btn" type="submit" value="Save">
-            </form> -->
+            </form>
+        </div>
+        <div class="connection_api query edit" style="padding: 83px; display:none">
+            <h3>Edit Query</h3>
+            <form action="">
+                <input type="hidden" name="query_id_edit" id="query_id_edit">
+                <label for="">
+                    Endpoint: <input disabled type="text" name="endpoint_name_edit" id="endpoint_name_edit">
+                </label>
+                <br>
+                <label for="">
+                    Query: <input type="text" name="query_name_edit" id="query_name_edit">
+                </label>
+                <label for="">
+                    Value: <input type="text" name="query_value_edit" id="query_value_edit">
+                </label>
+                <input class="connection_api btn" type="submit" value="Save">
+            </form>
         </div>
     </div>
 </div>
 <script>
-    
+    function addEndpointsQuerys(id, endpointsList) {
+        let containerP = document.querySelector(".connection_api.endpoints.Action div")
+        let element = ''
+        let selectAdd = '<option disabled>Select Endpoint</option>'
 
-    function editInfoS(id, nameapi, baseurl, session, tokentime, email, password, endpoint, apikey, apikeynum) {
-        let NameApi = document.querySelector("#name_api_request_edit")
-        let BaseUrl = document.querySelector("#url_api_base_request_edit")
-        let Session = document.querySelector("#need_session_request_edit")
-        let TokenTime = document.querySelector("#refresh_token_request_edit")
-        let ApiKey = document.querySelector("#api_key_request_edit")
-        let ApiKeyNum = document.querySelector("#api_key_text_request_edit")
-        let Email = document.querySelector("#email_credential_api_request_edit")
-        let Password = document.querySelector("#password_credential_api_request_edit")
-        let Id = document.querySelector("#id_api_request_edit")
-        let EndpointSession = document.querySelector("input#endpoint_session_request_edit")
+        endpointsList.forEach((e, index) => {
+            element += `
+                    <div title="Press to configure this endpoint ${index+1}">
+                        <button onclick="addEndpointQuerys(${id},'${e}', [{query:'a', value:'aaaaaaaaaa'}, {query:'b', value:'bbbbbbbb'}, {query:'c', value:'ccccccccc'}, {query: '${index+1}', value: 'aaaaaaaaa'}])">${e}</button>
+                    </div>
+            
+            `
+            selectAdd += `
+                <option value="${e}">${e}</option>
+            `
 
-        NameApi.value = nameapi;
-        BaseUrl.value = baseurl;
-        Session.checked = session;
-        TokenTime.value = tokentime;
-        ApiKey.checked = apikey;
-        ApiKeyNum.value = apikeynum;
-        Email.value = email;
-        Password.value = password;
-        Id.value = id;
-        EndpointSession.value = endpoint
+        });
+        containerP.innerHTML = element
 
-        document.querySelector("label.endpoint_session_request_edit").innerHTML = baseurl + "/"
+        document.querySelector(".connection_api.endpoints.Action.querys div").innerHTML = `
+        <div title="Press to Add Query">
+                    <button onclick="addQueryA(${id})">Add Query</button>
+                </div>
+        `
+
+        document.querySelector("#selectEndpointDV").innerHTML = selectAdd
+
+        document.querySelector('#query_id').value = id
+
+        document.querySelector(".connection_api.endpoints.Action").style.display = "block"
+        document.querySelector(".connection_api.endpoints.Action.querys").style.display = "block"
     }
 
-    let countEditKeyToText2 = 0
-    let countEditPasswordToText2 = 0
-    document.querySelector("#api_key_text_request_edit~i").addEventListener("click", e => {
-        if (countEditKeyToText2 > 1) {
-            countEditKeyToText2 = 0
-        }
-        if (countEditKeyToText2 == 0) {
-            document.querySelector("#api_key_text_request_edit").type = 'text'
-            e.target.innerHTML = "visibility"
-        } else {
-            document.querySelector("#api_key_text_request_edit").type = 'password'
-            e.target.innerHTML = "visibility_off"
-        }
-        countEditKeyToText2++
-    })
+    function addEndpointQuerys(id, endpoint, querysList) {
+        if (querysList.length <= 0) return
+        let containerP = document.querySelector(".connection_api.endpoints.Action.querys div")
+        element = ""
 
-    document.querySelector("#password_credential_api_request_edit~i").addEventListener("click", e => {
-        if (countEditPasswordToText2 > 1) {
-            countEditPasswordToText2 = 0
-        }
-        if (countEditPasswordToText2 == 0) {
-            document.querySelector("#password_credential_api_request_edit").type = 'text'
-            e.target.innerHTML = "visibility"
-        } else {
-            document.querySelector("#password_credential_api_request_edit").type = 'password'
-            e.target.innerHTML = "visibility_off"
-        }
-        countEditPasswordToText2++
-    })
+        element += `
+        <div title="Press to Add Query">
+                    <button onclick="addQueryA(${id})">Add Query</button>
+                </div>
+        `
+
+        querysList.forEach((e, index) => {
+            element += `
+                    <div title="Press to configure this query ${e.query}">
+                        <button onclick="editQuery(${id}, '${e.query}', '${e.value}', '${endpoint}')">${e.query}</button>
+                    </div>
+            
+            `
+        });
+        containerP.innerHTML = element
+        document.querySelector(".connection_api.endpoints.Action.querys").style.display = "block"
+    }
+
+    function editQuery(id, query, value, endpoint) {
+
+        document.querySelector('#query_id_edit').value = id
+        document.querySelector('#endpoint_name_edit').value = endpoint
+        document.querySelector('#query_name_edit').value = query
+        document.querySelector('#query_value_edit').value = value
+
+        document.querySelector(".connection_api.query.add").style.display = 'none'
+        document.querySelector(".connection_api.query.edit").style.display = 'block'
+    }
+
+    function addQueryA(id) {//query_id
+
+        document.querySelector('#query_id').value = id
+
+
+        document.querySelector(".connection_api.query.edit").style.display = 'none'
+        document.querySelector(".connection_api.query.add").style.display = 'block'
+    }
 </script>

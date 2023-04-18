@@ -1,8 +1,5 @@
 <?php
-require_once dirname(__FILE__, 2) . '\const\const.php';
-
-
-
+    require_once dirname(__FILE__, 2) . '\const\const.php';
 ?>
 
 <div>
