@@ -1,7 +1,12 @@
 <?php
 require_once dirname(__FILE__, 2) . '\const\const.php';
 
-$postElements = ["comment_status", "post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category"];
+$postElements = ["comment_status", "post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image"];
+
+enum Suit
+{
+}
+
 
 
 ?>
@@ -15,6 +20,7 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
         <h1>APIS:</h1>
         <div class="cards">
             <?php
+            $urlBase = "https://localhost/proyectos";
             for ($i = 0; $i < 10; $i++) {
             ?>
                 <div class="connection_api card">
@@ -28,9 +34,9 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                         <h4>Api Key Value: EacnE3fo35vm1313#cvlk</h4>
                     </div>
                     <div class="footer" style="margin: 10px">
-                        <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
+                        <a href="https://localhost/proyectos/estudio/wp-admin" target="_blank">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="settingsEndpoints(65465, 'prueba','https/localhost:5000', true, 10, 'dscampaz3110@gmail.com', 'daniel2008b', 'auth/login', true, '1321casc5efa11e51', 2 )">Edit Info</button>
+                        <button onclick="settingsEndpoints(<?php echo $i ?>, '<?php echo $urlBase ?>', [{ endpoint: 'action', queries: [{ query: 'aK', value: 'aaaaaaaaaaK',action: {type: 'jsonPC',actions: {comment_status: false,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'bK', value: 'bbbbbbbbK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }, { query: 'cK', value: 'cccccccccK',action: {type: 'jsonPC',actions: {comment_status: true,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'sK', value: 'sssssssK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }] }])">Edit Queries</button>
                     </div>
                 </div>
             <?php
@@ -38,35 +44,15 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
             ?>
         </div>
     </div>
-    <div class="endpoints" style="margin: 15px">
+    <div class="endpoints" id="initd" style="display: none; margin: 15px;">
         <h3>Endpoints:</h3>
-        <div>
-            <?php
-            for ($i = 1; $i <= 50; $i++) {
-            ?>
-                <div title="Press to configure this endpoint '<?php echo $i ?>'">
-                    <button onclick="btnEndpointsEdit(<?php echo $i ?>)"><?php echo $i ?></button>
-                </div>
-            <?php
-            }
-            ?>
-        </div>
+        <div></div>
     </div>
-    <div class="endpoints" style="margin: 15px">
+    <div class="endpoints" id="querysd" style="display: none; margin: 15px;">
         <h3>Query's:</h3>
-        <div>
-            <?php
-            for ($i = 1; $i <= 50; $i++) {
-            ?>
-                <div title="Press to configure this endpoint '<?php echo $i ?>'">
-                    <button onclick="btnEndpointsEdit(<?php echo $i ?>)"><?php echo $i ?></button>
-                </div>
-            <?php
-            }
-            ?>
-        </div>
+        <div></div>
     </div>
-    <div class="connection_api configurateToDoEndpoints">
+    <div class="connection_api configurationToDoEndpoints container" style="display: none;">
         <div class="query">
             <h3>{url}/{endpoint}?{query}</h3>
         </div>
@@ -116,25 +102,30 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                                                 </label>
                                                 <input title="Only properties of type string can be" name="json_configuration_<?php echo $apE ?>_posttype_create_type" id="json_configuration_<?php echo $apE ?>_posttype_create_type" value="String" disabled>
 
-                                                <label title="If there are levels deep use the ':' like this: 'properties:action:remenber'" for="json_configuration_<?php echo $apE ?>_posttype_create_name" style="margin:5px;">
+                                                <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_<?php echo $apE ?>_posttype_create_name" style="margin:5px;">
                                                     Name
                                                 </label>
-                                                <input title="If there are levels deep use the ':' like this: 'properties:action:remenber'" type="text" name="json_configuration_<?php echo $apE ?>_posttype_create_name" id="json_configuration_<?php echo $apE ?>_posttype_create_name">
+                                                <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_<?php echo $apE ?>_posttype_create_name" id="json_configuration_<?php echo $apE ?>_posttype_create_name">
+                                            </div>
+                                            <label class="content-input" for="no_dynamic_status">
+                                                <input type="checkbox" name="no_dynamic_status" id="no_dynamic_status"> With this option, all posts will have the type of status that you define below if it does not agree with what you put above
+                                                <i></i>
+                                            </label>
+                                            <div class="no dynamic">
+                                                <label for="no-dynamic-publish">Select option for status</label>
+                                                <select name="no-dynamic-publish" id="no-dynamic-publish">
+                                                    <option disabled value="select status">select status</option>
+                                                    <option value="publish">Publish</option>
+                                                    <option value="future">Future</option>
+                                                    <option value="draft">Draft</option>
+                                                    <option value="pending">Tending</option>
+                                                    <option value="private">Private</option>
+                                                    <option value="trash">Trash</option>
+                                                    <option value="auto-draft">Auto-draft</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="no dynamic">
-                                    <label for="no-dynamic-publish">Choose what type of status will be applied to the post, keep in mind that they will be applied to all posts</label>
-                                    <select name="no-dynamic-publish" id="no-dynamic-publish">
-                                        <option value="publish">Publish</option>
-                                        <option value="future">Future</option>
-                                        <option value="draft">Draft</option>
-                                        <option value="pending">Tending</option>
-                                        <option value="private">Private</option>
-                                        <option value="trash">Trash</option>
-                                        <option value="auto-draft">Auto-draft</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -167,6 +158,30 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                             </div>
                         </div>
                     <?php
+                    } else if ($apE === "featured_image") {
+                    ?>
+                        <div class="postype config dynamic <?php echo $apE ?>">
+                            <i title="Arrow for <?php echo $apE ?>" class="material-icons arrowX despla <?php echo $apE ?>">keyboard_arrow_right</i>
+                            <h4><?php echo $apE ?></h4>
+                            <div class="content postype config arrow_<?php echo $apE ?>" style="display: none">
+                                <h2><?php echo $apE ?></h2>
+                                <h3>What key of the json of the response will be in the <?php echo $apE ?></h3>
+                                <div>
+                                    <div class="multiples_json_properties_configurations_<?php echo $apE ?>" style="margin:5px;">
+                                        <label title="Only properties of type string can be" for="json_configuration_<?php echo $apE ?>_posttype_create_type" style="margin:5px;">
+                                            Type
+                                        </label>
+                                        <input title="Only properties of type string can be" name="json_configuration_<?php echo $apE ?>_posttype_create_type" id="json_configuration_<?php echo $apE ?>_posttype_create_type" value="Featured Image" disabled>
+
+                                        <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_<?php echo $apE ?>_posttype_create_name" style="margin:5px;">
+                                            Name
+                                        </label>
+                                        <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_<?php echo $apE ?>_posttype_create_name" id="json_configuration_<?php echo $apE ?>_posttype_create_name">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
                     } else {
                     ?>
 
@@ -192,9 +207,26 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
                 ?>
                 <button type="submit" class="button-secondary">Save</button>
             </form>
-
         </div>
         <div class="image val" style="display: none;">
+            <form action="" method="post">
+                <div class="postype config dynamic <?php echo $apE ?>">
+                    <i title="Arrow for <?php echo $apE ?>" class="material-icons arrowX despla <?php echo $apE ?>">keyboard_arrow_right</i>
+                    <h4><?php echo $apE ?></h4>
+                    <div class="content postype config arrow_<?php echo $apE ?>" style="display: none">
+                        <h2><?php echo $apE ?></h2>
+                        <h3>What key of the json of the response will be in the <?php echo $apE ?></h3>
+                        <p>Note: the properties that you add will be attached to the post in that same order</p>
+                        <label>
+                            How many keys will be used here <input id="input_number_types_<?php echo $apE ?>" type="number" value="0">
+                        </label>
+                        <div>
+                            <div class="multiples_json_properties_configurations_<?php echo $apE ?>" style="margin:5px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="button-secondary">Save</button>
+            </form>
         </div>
     </div>
 </div>
@@ -202,15 +234,33 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
 
 <script>
     let postTypeAttributesWAl = ["post_author", "post_name", "post_title", "post_content", "post_category"];
-    let postTypeAttributes = ["post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category"]
+    let postTypeAttributes = ["post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image"]
 
     postTypeAttributesWAl.forEach(el => {
         let optionSelect;
 
         if (el === "post_category") {
             optionSelect = `<option value="string">String</option><option value="arrayString">Array String</option>`
+        } else if (el === "post_content") {
+            optionSelect = `
+            <option value="string">String</option>
+            <option value="number">Number</option>
+            <option value="bool">Boolean</option>
+            <option value="img">Image</option>
+            <option value="video" title="if you choose video keep in mind that you will need Video-Js">Video</option>
+            <option value="arrayInt">Array Int</option>
+            <option value="arrayString">Array String</option>
+            <option value="arrayBoolean">Array Boolean</option>
+            <option value="arrayImage">Array Image</option>
+            <option value="arrayVideo" title="if you choose video keep in mind that you will need Video-Js">Array Video</option>`
         } else {
-            optionSelect = `<option value="string">String</option><option value="number">Number</option><option value="bool">Boolean</option><option value="imgbool">Image</option><option value="arrayInt">Array Int</option><option value="arrayString">Array String</option><option value="arrayBoolean">Array Boolean</option><option value="arrayImage">Array Image</option>`
+            optionSelect = `
+            <option value="string">String</option>
+            <option value="number">Number</option>
+            <option value="bool">Boolean</option>
+            <option value="arrayInt">Array Int</option>
+            <option value="arrayString">Array String</option>
+            <option value="arrayBoolean">Array Boolean</option>`
         }
 
 
@@ -259,30 +309,277 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
 </script>
 
 <script>
+    let imageContainer = document.querySelector(".image.val")
+    let postTypeContainer = document.querySelector(".posttype.json")
 
-    function btnEndpointsEdit(i){
-        console.log("DaDNALDNALKDN "+i)
+    const EnumTb = Object.freeze({
+        JSON: "jsonPC",
+        SAVEIMG: "saveImage"
+    })
+
+    function btnEndpointsEdit(id, queries, nameEndpoint, urlBase) {
+        let containerQueries = document.querySelector(".endpoints#querysd");
+        let containerDivQueries = document.querySelector(".endpoints#querysd div");
+        document.querySelector(".endpoints#querysd h3").innerHTML = `Query's for ${nameEndpoint}`;
+
+        let elementQueries = ``;
+
+
+        let queriesS = convertArrayQueryToString(queries)
+
+        queries.forEach((e, index, array) => {
+
+            let jsonProperty = convertJsonPropertiesToString(e, -1, array)
+
+            elementQueries += `<div title="Press to configure this query '${e.query}'">
+                    <button onclick="btnQuerySetUp(${queriesS}, ${jsonProperty}, '${urlBase}', '${nameEndpoint}')">${urlBase}/${nameEndpoint}?${e.query}=${e.value}</button>
+                </div>`
+        })
+
+        containerDivQueries.innerHTML = elementQueries
+        containerQueries.style.display = "block"
     }
 
-    function settingsEndpoints(){
-        
+    function btnQuerySetUp(queries, query, urlBase, nameEndpoint) {
+        let tileQuery = document.querySelector(".connection_api.configurationToDoEndpoints.container")
+        let tileQueryTime = document.querySelector(".connection_api.configurationToDoEndpoints.container .query h3")
+
+        tileQueryTime.innerHTML = `${urlBase}/${nameEndpoint}?${query.query}=${query.value}`
+
+
+        tileQuery.style.display = "block"
+
+        if (query.action || query.action.type || query.action.actions) {
+            if (query.action.type === EnumTb.JSON) {
+                createPostJsonSee(query.action.actions)
+            } else if (query.action.type === EnumTb.SAVEIMG) {
+                saveImageSee(query.action.actions)
+            }
+        }
+    }
+
+    function createPostJsonSee(actions) {
+        //TODO: Implementar el llenado de INPUTS
+
+
+
+        document.querySelector("#actionTodoEndpoint").value = "post-type"
+        imageContainer.style.display = "none"
+        postTypeContainer.style.display = "block"
+    }
+
+    function saveImageSee(actions) {
+        //TODO: Implementar el llenado de INPUTS
+
+
+
+        document.querySelector("#actionTodoEndpoint").value = "save-image"
+        imageContainer.style.display = "block"
+        postTypeContainer.style.display = "none"
+    }
+
+    function settingsEndpoints(id, urlBase, endpoints) {
+        let containerEndpoint = document.querySelector(".endpoints#initd");
+        let containerDivEndpoint = document.querySelector(".endpoints#initd div");
+
+        let elementEndpoints = ``;
+
+        endpoints.forEach((e, index) => {
+            let endpointNameProv = e.endpoint
+            let endpointQueriesProv = e.queries
+
+            let strQueriesProvS = convertArrayQueryToString(endpointQueriesProv)
+
+            elementEndpoints += `<div title="Press to configure this endpoint '${endpointNameProv}'">
+                                    <button onclick="btnEndpointsEdit(${id}, ${strQueriesProvS}, '${endpointNameProv}', '${urlBase}')">${endpointNameProv}</button>
+                                </div>`
+        })
+
+        containerDivEndpoint.innerHTML = elementEndpoints
+
+        containerEndpoint.style.display = "block"
     }
 
     document.querySelector("#actionTodoEndpoint").addEventListener("change", e => {
         let select = e.target.value
 
-        console.log(select)
-
-        if(select === "post-type"){
-            document.querySelector(".image.val").style.display = "none"
-            document.querySelector(".posttype.json").style.display = "block"
-        }else if(select === "save-image"){
-            document.querySelector(".posttype.json").style.display = "none"
-            document.querySelector(".image.val").style.display = "block"
+        if (select === "post-type") {
+            imageContainer.style.display = "none"
+            postTypeContainer.style.display = "block"
+        } else if (select === "save-image") {
+            postTypeContainer.style.display = "none"
+            imageContainer.style.display = "block"
         }
 
     })
 
+    function convertArrayQueryToString(arrayS) {
+        let strQueriesProv = `[`;
+        arrayS.forEach((e, index, array) => {
+            strQueriesProv += convertJsonPropertiesToString(e, index, array)
+        })
+
+        strQueriesProv += `]`;
+
+        return strQueriesProv
+    }
+
+    function convertJsonPropertiesToString(e, index, array) {
+        let actions = ``
+        let strQuery = ``
+        if (e.action.type === "jsonPC") {
+            actions += convertJsonPostCreateToString(e.action.actions)
+        } else if (e.action.type === "saveImage") {
+            actions += convertSaveImageToString(e.action.actions)
+        }
+
+        if (index === (array.length - 1) || index === -1) {
+            strQuery += `{
+                                          query: '${e.query}',
+                                          value: '${e.value}',
+                                          action: {
+                                            type: '${e.action.type}',
+                                            actions: ${actions}
+                                          }
+                                    }`
+        } else {
+            strQuery += `{
+                                          query: '${e.query}',
+                                          value: '${e.value}',
+                                          action: {
+                                            type: '${e.action.type}',
+                                            actions: ${actions}
+                                          }
+                                   },`
+        }
+        return strQuery
+    }
+
+    function convertJsonPostCreateToString(obj) {
+        let actionA = `{
+            comment_status: ${obj.comment_status},
+            featured_image: '${obj.featured_image}',
+            post_status: {
+                type: '${obj.post_status.type}',
+                value: '${obj.post_status.value}'
+            },
+            post_type: {
+                type: '${obj.post_type.type}',
+                value: '${obj.post_type.value}'
+            },
+            post_author: [
+        `
+        obj.post_author.forEach((e, index, array) => {
+            if (index === (array.length - 1)) {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    }
+                `
+            } else {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    },
+                `
+            }
+        })
+
+        actionA += `],
+            post_name: [
+        `
+        obj.post_name.forEach((e, index, array) => {
+            if (index === (array.length - 1)) {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    }
+                `
+            } else {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    },
+                `
+            }
+        })
+        actionA += `],
+            post_category: [
+        `
+        obj.post_category.forEach((e, index, array) => {
+            if (index === (array.length - 1)) {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    }
+                `
+            } else {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    },
+                `
+            }
+        })
+        actionA += `],
+            post_title: [
+        `
+        obj.post_title.forEach((e, index, array) => {
+            if (index === (array.length - 1)) {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    }
+                `
+            } else {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    },
+                `
+            }
+        })
+        actionA += `],
+            post_content: [
+        `
+        obj.post_content.forEach((e, index, array) => {
+            if (index === (array.length - 1)) {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    }
+                `
+            } else {
+                actionA += `
+                    {
+                        type: '${e.type}',
+                        value: '${e.value}'
+                    },
+                `
+            }
+        })
+        actionA += `]}`
+
+        return actionA
+    }
+
+    function convertSaveImageToString(obj) {
+        return `
+            {
+                name: '${obj.name}',
+                save: ${obj.save}
+            }
+        `
+    }
 </script>
 
 <style>
@@ -458,13 +755,13 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
 </style>
 
 <style>
-    .endpoints > div{
+    .endpoints>div {
         width: 710px;
         display: flex;
         overflow: scroll;
     }
 
-    .endpoints > div div button{
+    .endpoints>div div button {
         padding: 15px;
         background: var(--color-gradient-principal);
         border-radius: 15px;
@@ -472,8 +769,7 @@ $postElements = ["comment_status", "post_author", "post_name", "post_title", "po
         color: white;
     }
 
-    .endpoints > div div button:hover{
+    .endpoints>div div button:hover {
         cursor: pointer;
     }
-
 </style>

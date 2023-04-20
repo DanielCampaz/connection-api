@@ -25,7 +25,7 @@
                         <h4>Api Key Value: EacnE3fo35vm1313#cvlk</h4>
                     </div>
                     <div class="footer" style="margin: 10px">
-                        <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
+                        <a href="https://localhost/proyectos/estudio/wp-admin" target="_blank">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
                         <!--                       ID      Name Api        Base URL            Session Token-Time        Email                Password       endpoint-session  Api-key?    Api-Key-Value    How-INIT-Session doyouW  HourUpdateTime name-Api-Send  How-T-S-A-K       EndpointList                     -->
                         <button onclick="editInfo(65465,   'prueba'  ,'https/localhost:5000',   true,     10,     'dscampaz3110@gmail.com', 'daniel2008b',     'auth/login',    true,   '1321casc5efa11e51',       1,         true,       3,          'api-key',        1,           ['acas', 'acasca/asc', 'acsc', 'feres'] )">Edit Info</button>

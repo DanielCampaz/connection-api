@@ -26,9 +26,9 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
                         <h4>Api Key Value: EacnE3fo35vm1313#cvlk</h4>
                     </div>
                     <div class="footer" style="margin: 10px">
-                        <a href="https://localhost/proyectos/estudio/wp-admin">https://localhost/proyectos/estudio/wp-admin</a>
+                        <a href="https://localhost/proyectos/estudio/wp-admin" target="_blank">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="addEndpointsQuerys(65465, ['aas', 'Sas/s', 'csca', '<?php echo $i ?>'] )">Edit Info</button>
+                        <button onclick="addEndpointsQuerys(65465, ['aas', 'Sas/s', 'csca', '<?php echo $i ?>'] )">Edit Queries or Add Query</button>
                     </div>
                 </div>
             <?php
