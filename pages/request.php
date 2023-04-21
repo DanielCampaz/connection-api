@@ -1,6 +1,13 @@
 <?php
 require_once dirname(__FILE__, 2) . '\const\const.php';
+if($_POST && $_POST["type_form_request"] ){
+    if($_POST["type_form_request"] === "edit"){
 
+    }else if($_POST["type_form_request"] === "add"){
+        
+    }
+    print_r($_POST);
+}
 
 ?>
 <div>
@@ -52,7 +59,8 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
     <div class="connection_api">
         <div class="connection_api query add" style="height: 100%; padding: 53px; display:none">
             <h3>Add Query</h3>
-            <form action="">
+            <form action="" method="post">
+                <input type="hidden" name="type_form_request" value="add">
                 <input type="hidden" name="query_id" id="query_id">
                 <div class="action">
                     <select name="selectEndpointDV" id="selectEndpointDV" class='selectCSS' title="Select To Action"></select>
@@ -90,10 +98,12 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         </div>
         <div class="connection_api query edit" style="height: 100%; padding: 53px; display:none">
             <h3>Edit Query</h3>
-            <form action="">
+            <form action="" method="post">
+                <input type="hidden" name="type_form_request" value="edit">
                 <input type="hidden" name="query_id_edit" id="query_id_edit">
+                <input type="hidden" name="endpoint_name_edit" id="endpoint_name_edit">
                 <label for="">
-                    Endpoint: <input disabled type="text" name="endpoint_name_edit" id="endpoint_name_edit">
+                    Endpoint: <input disabled type="text" name="endpoint_name_edit_disbled" id="endpoint_name_edit_disbled">
                 </label>
                 <br>
                 <label for="">
@@ -196,6 +206,7 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
 
         document.querySelector('#query_id_edit').value = id
         document.querySelector('#endpoint_name_edit').value = endpoint
+        document.querySelector('#endpoint_name_edit_disbled').value = endpoint
         document.querySelector('#query_name_edit').value = query
         document.querySelector('#query_value_edit').value = value
 

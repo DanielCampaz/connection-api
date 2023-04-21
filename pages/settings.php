@@ -1,5 +1,12 @@
 <?php
     require_once dirname(__FILE__, 2) . '\const\const.php';
+    if($_POST && $_POST["type_form"] ){
+        if($_POST["type_form"] === "edit"){
+
+        }else if($_POST["type_form"] === "add"){
+            
+        }
+    }
 ?>
 
 <div>
@@ -39,7 +46,8 @@
     <div class="connection_api form container add">
         <div class="connection_api form add">
             <h1>Form To Add Api</h1>
-            <form class="connection_api from init" action="" method="post">
+            <form class="connection_api from init" method="post">
+                <input type="hidden" name="type_form" value="add">
                 <div class="connection_api content">
                     <div>
                         <label for="name_api">Name API: </label>
@@ -135,7 +143,7 @@
                 <div class="connection_api content" id="name_attributes" style="display: none;">
                     <div style="display: flex; align-items: center;">
                         <label for="api_key_name_attr">Name Attribute Api Key: </label>
-                        <input type="password" name="api_key_name_attr" id="api_key_name_attr">
+                        <input type="text" name="api_key_name_attr" id="api_key_name_attr">
                     </div>
                     <div title="How send Api Key?">
                         <label for="h_s_ak_r">How to Send Api Key?</label>
@@ -168,6 +176,7 @@
         <div class="connection_api form add">
             <h1>Form To Edit Api</h1>
             <form class="connection_api from edit" action="" method="post">
+                <input type="hidden" name="type_form" value="edit">
                 <input type="hidden" name="id_api_edit" id="id_api_edit">
                 <input type="hidden" name="sessionTrue_api_edit" id="sessionTrue_api_edit" value="true">
                 <input type="hidden" name="apikeyTrue_api_edit" id="apikeyTrue_api_edit" value="true">

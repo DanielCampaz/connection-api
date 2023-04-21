@@ -4,10 +4,6 @@ require_once dirname(__FILE__, 2) . '\class\backupaction.php';
 require_once dirname(__FILE__, 2) . '\functions\functions.php';
 require_once dirname(__FILE__, 2) . '\const\const.php';
 
-//TODO: Organizer add Endpoints, List automatic endpoint Session
-
-//TODO: Previews of urls, pass num endpoints to settings
-
 ?>
  
 <!DOCTYPE html>

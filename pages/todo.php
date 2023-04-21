@@ -7,6 +7,124 @@ enum Suit
 {
 }
 
+if ($_POST && $_POST["type_form_request"]) {
+    if ($_POST["type_form_request"] === "edit") {
+    } else if ($_POST["type_form_request"] === "add") {
+    }
+    print_r($_POST);
+}
+
+
+$endpointS = "[
+    { 
+        endpoint: 'action',
+         queries: [
+            { 
+                query: 'aca',
+                value: 'kcbakj',
+                type: 'query',
+                routeResponse: 'cansc:acs:ca',
+                typeResponse: 'object',
+                action : {
+                    type: 'saveImage',
+                    actions: [
+                        {
+                            route: 'cascsa:asca:cas',
+                            save: true,
+                            type: 'string'
+                        },
+                        {
+                            route: 'eree:rerasca:ceas',
+                            save: true,
+                            type: 'string'
+                        },
+                        {
+                            route: 'hru:sc:d?asa',
+                            save: false,
+                            type: 'arrayString'
+                        }
+                    ]
+                }
+            },
+            { 
+                query: 'vvdv',
+                value: 'kcbsdvfakj',
+                type: 'body',
+                routeResponse: 'cansc:acs:ca',
+                typeResponse: 'array',
+                action : {
+                    type: 'jsonPC',
+                    actions: {
+                        comment_status: true,
+                        featured_image: 'asa:dvd:img',
+                        next: {
+                            exist: true,
+                            route: 'acas:asca:cs',
+                            urlComp: true
+                        },
+                        post_author: [
+                            {
+                                type: 'String',
+                                value: 'casc:scs:s'
+                            },
+                            {
+                                type: 'String',
+                                value: 'casc:scs:s'
+                            }
+                        ],
+                        post_category: [
+                            {
+                                type: 'Array String',
+                                value: 'cascacc:caca?cas:ca'
+                            }
+                        ],
+                        post_content : [
+                            {
+                                type: 'String',
+                                value: 'aada:sa:aca'
+                            }
+                        ],
+                        post_name: [
+                            {
+                                type: 'String',
+                                value: 'aada:sa:name'
+                            }
+                        ],
+                        post_status: {
+                            type: 'String',
+                            value: 'acsa:cas:status'
+                        },
+                        post_title: [
+                            {
+                                type: 'String',
+                                value: 'acsa:cas:title'
+                            },
+                            {
+                                type: 'String',
+                                value: 'acsa:cas:subTtitle'
+                            }
+                        ],
+                        post_type: {
+                            type: 'String',
+                            value: 'casac:post:type'
+                        }
+                    }
+                }
+            },
+            { 
+                query: 'acaca',
+                value: 'bgbfg',
+                type: 'query',
+                routeResponse: 'cansc:acs:ca',
+                typeResponse: 'object',
+                action : {
+                    type: 'none',
+                }
+            }
+        ]
+    }
+]"
+
 ?>
 
 <div>
@@ -34,7 +152,7 @@ enum Suit
                     <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin" target="_blank">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="settingsEndpoints(<?php echo $i ?>, 'Name Api','<?php echo $urlBase ?>', [{ endpoint: 'action', queries: [{ query: 'aK', value: 'aaaaaaaaaaK',action: {type: 'jsonPC',actions: {comment_status: false,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'bK', value: 'bbbbbbbbK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }, { query: 'cK', value: 'cccccccccK',action: {type: 'jsonPC',actions: {comment_status: true,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'sK', value: 'sssssssK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }] }])">Edit Queries</button>
+                        <button onclick="settingsEndpoints(<?php echo $i ?>, 'Name Api','<?php echo $urlBase ?>', <?php echo $endpointS ?>)">Edit Queries</button>
                     </div>
                 </div>
             <?php
@@ -64,6 +182,10 @@ enum Suit
         </div>
         <div class="posttype json" style="display: none;">
             <form action="" method="post">
+                <input type="hidden" name="form_todo" value="json">
+                <input type="hidden" name="id_api" id="id_api">
+                <input type="hidden" name="endpoint_api" id="endpoint_api">
+                <input type="hidden" name="id_query" id="id_query">
                 <?php
 
                 foreach ($postElements as $apE) {
@@ -240,6 +362,10 @@ enum Suit
         </div>
         <div class="image val" style="display: none;">
             <form action="" method="post">
+                <input type="hidden" name="form_todo" value="image-save">
+                <input type="hidden" name="id_api" id="id_api_edit">
+                <input type="hidden" name="id_query" id="id_query_edit">
+                <input type="hidden" name="endpoint_api" id="endpoint_api_edit">
                 <div class="postype config dynamic save-image">
                     <i title="Arrow for save-image" class="material-icons arrowX despla save-image">keyboard_arrow_right</i>
                     <h4>Save Image</h4>
@@ -344,15 +470,21 @@ enum Suit
 
     const EnumTb = Object.freeze({
         JSON: "jsonPC",
-        SAVEIMG: "saveImage"
+        SAVEIMG: "saveImage",
+        NONE: "none"
     })
 
     function btnEndpointsEdit(id, queries, nameEndpoint, urlBase) {
+        
         let containerQueries = document.querySelector(".endpoints#querysd");
         let containerDivQueries = document.querySelector(".endpoints#querysd div");
         document.querySelector(".endpoints#querysd h3").innerHTML = `Query's for ${nameEndpoint}`;
 
         let elementQueries = ``;
+
+        
+        document.querySelector("#endpoint_api").value = nameEndpoint
+        document.querySelector("#endpoint_api_edit").value = nameEndpoint
 
 
         let queriesS = convertArrayQueryToString(queries)
@@ -376,14 +508,17 @@ enum Suit
 
         tileQueryTime.innerHTML = `${urlBase}/${nameEndpoint}?${query.query}=${query.value}`
 
+        //TODO Definir
+        // document.querySelector("#id_query").value = nameEndpoint
+        // document.querySelector("#id_query_edit").value = nameEndpoint  
 
         tileQuery.style.display = "block"
 
         if (query.action || query.action.type || query.action.actions) {
             if (query.action.type === EnumTb.JSON) {
-                createPostJsonSee(query.action.actions)
+                createPostJsonSee(query.action)
             } else if (query.action.type === EnumTb.SAVEIMG) {
-                saveImageSee(query.action.actions)
+                saveImageSee(query.action)
             }
         }
     }
@@ -401,7 +536,7 @@ enum Suit
     function saveImageSee(actions) {
         //TODO: Implementar el llenado de INPUTS
 
-
+        seeSaveImage(actions)
 
         document.querySelector("#actionTodoEndpoint").value = "save-image"
         imageContainer.style.display = "block"
@@ -412,6 +547,12 @@ enum Suit
         let containerEndpoint = document.querySelector(".endpoints#initd");
         let containerDivEndpoint = document.querySelector(".endpoints#initd div");
         let containerH3Endpoint = document.querySelector(".endpoints#initd h3");
+        //<input type="hidden" name="id_api" id="id_api">
+        //<input type="hidden" name="id_query" id="id_query">
+        //<input type="hidden" name="endpoint_api" id="endpoint_api">
+
+        document.querySelector("#id_api").value = id
+        document.querySelector("#id_api_edit").value = id
 
         let elementEndpoints = ``;
 
@@ -420,7 +561,6 @@ enum Suit
         endpoints.forEach((e, index) => {
             let endpointNameProv = e.endpoint
             let endpointQueriesProv = e.queries
-
             let strQueriesProvS = convertArrayQueryToString(endpointQueriesProv)
 
             elementEndpoints += `<div title="Press to configure this endpoint '${endpointNameProv}'">
@@ -448,6 +588,7 @@ enum Suit
 
     function convertArrayQueryToString(arrayS) {
         let strQueriesProv = `[`;
+
         arrayS.forEach((e, index, array) => {
             strQueriesProv += convertJsonPropertiesToString(e, index, array)
         })
@@ -459,29 +600,38 @@ enum Suit
 
     function convertJsonPropertiesToString(e, index, array) {
         let actions = ``
+        let actionsQ = true;
         let strQuery = ``
-        if (e.action.type === "jsonPC") {
+        if (e.action.type === EnumTb.JSON) {
             actions += convertJsonPostCreateToString(e.action.actions)
-        } else if (e.action.type === "saveImage") {
-            actions += convertSaveImageToString(e.action.actions)
+        } else if (e.action.type === EnumTb.SAVEIMG) {
+            actions += convertSaveImageArrayToString(e.action.actions)
+        } else if (e.action.type === EnumTb.NONE) {
+            actionsQ = false
         }
 
         if (index === (array.length - 1) || index === -1) {
             strQuery += `{
                                           query: '${e.query}',
                                           value: '${e.value}',
+                                          type: '${e.type}',
+                                          routeResponse: '${e.routeResponse}',
+                                          typeResponse: '${e.typeResponse}',
                                           action: {
                                             type: '${e.action.type}',
-                                            actions: ${actions}
+                                            ${actionsQ ? `actions: ${actions}` : ""}
                                           }
                                     }`
         } else {
             strQuery += `{
                                           query: '${e.query}',
                                           value: '${e.value}',
+                                          type: '${e.type}',
+                                          routeResponse: '${e.routeResponse}',
+                                          typeResponse: '${e.typeResponse}',
                                           action: {
                                             type: '${e.action.type}',
-                                            actions: ${actions}
+                                            ${actionsQ ? `actions: ${actions}` : ""}
                                           }
                                    },`
         }
@@ -499,6 +649,11 @@ enum Suit
             post_type: {
                 type: '${obj.post_type.type}',
                 value: '${obj.post_type.value}'
+            },
+            next : {
+                exist: ${obj.next.exist},
+                route: '${obj.next.route}',
+                urlComp: ${obj.next.urlComp}
             },
             post_author: [
         `
@@ -605,11 +760,28 @@ enum Suit
         return actionA
     }
 
+    function convertSaveImageArrayToString(obj) {
+        let saveImage = `[`
+
+        obj.forEach((e, index, array) => {
+            if(index === (array.length-1)){
+                saveImage += convertSaveImageToString(e)
+            }else{
+                saveImage += `${convertSaveImageToString(e)},`
+            }
+        })
+
+        saveImage += `]`
+
+        return saveImage;
+    }
+
     function convertSaveImageToString(obj) {
         return `
             {
-                name: '${obj.name}',
-                save: ${obj.save}
+                route: '${obj.route}',
+                save: ${obj.save},
+                type: '${obj.type}'
             }
         `
     }
@@ -632,24 +804,40 @@ enum Suit
         console.log(countSaveImageValue)
     })
 
+    function seeSaveImage(action){
+        let long = action.actions.length
+        document.querySelector("#input_number_types_save-image").value = long
+        addFormSaveImage()
+        action.actions.forEach((e, indexM, array) => {
+            document.querySelector(`#json_configuration_save-image_posttype_create_name_${indexM+1}`).value = e.route//json_configuration_save-image_posttype_create_type_${index+1}
+            document.querySelector(`#json_configuration_save-image_posttype_create_type_${indexM+1}`).value = e.type
+        })
+    }
+
     document.querySelector("#input_number_types_save-image").addEventListener("change", (e) => {
-        let number = e.target.value
+        addFormSaveImage()
+    })
+    function addFormSaveImage(){
+        let number = document.querySelector("#input_number_types_save-image").value
         let addElements = "";
         for (let index = 0; index < number; index++) {
             addElements += `<div class="inputs_dynamic_json">
-                        <label title="You can only add url of type String" for="json_configuration_save-image_posttype_${index}" style="margin:5px;">
+                        <label title="You can only add url of type String" for="json_configuration_save-image_posttype_${index+1}" style="margin:5px;">
                             Type
                         </label>
-                        <input title="You can only add url of type String" name="json_configuration_save-image_posttype_create_type_${index}" id="json_configuration_save-image_posttype_create_type_${index}" value="String" disabled>
-                        <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_save-image_posttype_create_name_${index}" style="margin:5px;">
+                        <select title="You can only add url of type String" name="json_configuration_save-image_posttype_create_type_${index+1}" id="json_configuration_save-image_posttype_create_type_${index+1}">
+                            <option value="string" selected>String</option>
+                            <option value="arrayString" title="If the property is of type array, remember to put '?' array?propertiesToTraverse">Array String</option>
+                        </select>
+                        <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_save-image_posttype_create_name_${index+1}" style="margin:5px;">
                             Name
                         </label>
-                        <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_save-image_posttype_create_name_${index}" id="json_configuration_save-image_posttype_create_name_${index}">
+                        <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_save-image_posttype_create_name_${index+1}" id="json_configuration_save-image_posttype_create_name_${index+1}">
                     </div>`
         }
 
         document.querySelector(".multiples_json_properties_configurations_save-image").innerHTML = addElements
-    })
+    }
 </script>
 
 <style>
