@@ -306,9 +306,18 @@
     })
 
     document.querySelector("#endpoints_api").addEventListener("change", (event) => {
-        let count = document.querySelector("#endpoints_api").value;
+        let count = event.target.value;
         let containerPrincipal = document.querySelector(".connection_api.properties")
         //let baseUrl = document.querySelector("#url_api_base_request_edit").value
+        let inputsAnt = []
+        if (count > 1){
+            if(inputsAnt.length > 0){
+                inputsAnt = []
+            }
+             for (let indexT = 1; indexT < count; indexT++) {
+                inputsAnt.push(document.querySelector(`#endpoints_api_name_${indexT}`).value)
+            }
+        }
 
         let elements = "";
         for (let index = 0; index < count; index++) {
@@ -323,7 +332,16 @@
 
         containerPrincipal.innerHTML = elements
 
+        if(inputsAnt.length > 0){
+            inputsAnt.forEach((e, index) => {
+                document.querySelector(`#endpoints_api_name_${index+1}`).value = e
+            })
+        }
     })
+
+    function rellenarEndpoints(count, ){
+
+    }
 
     function addEndpoint(t) {
         let count = document.querySelector("#endpoints_api_edit").value;

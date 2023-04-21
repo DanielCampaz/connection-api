@@ -31,15 +31,10 @@ require_once dirname(__FILE__, 2) . '\const\const.php';
         <div class="connection_api request content" style="display: none;">
             <?php require_once dirname(__FILE__) . '\request.php'; ?>
         </div>
-        <div class="connection_api settings  content" style="display: none;">
+        <div class="connection_api settings content" style="display: none;">
             <?php require_once dirname(__FILE__) . '\settings.php'; ?>
         </div>
     </main>
-    <script type="module">
-       
-    </script>
-    
-
 </body>
 
 </html>

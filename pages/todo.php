@@ -1,13 +1,11 @@
 <?php
 require_once dirname(__FILE__, 2) . '\const\const.php';
 
-$postElements = ["comment_status", "post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image"];
+$postElements = ["comment_status", "post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image", "next"];
 
 enum Suit
 {
 }
-
-
 
 ?>
 
@@ -36,7 +34,7 @@ enum Suit
                     <div class="footer" style="margin: 10px">
                         <a href="https://localhost/proyectos/estudio/wp-admin" target="_blank">https://localhost/proyectos/estudio/wp-admin</a>
                         <br />
-                        <button onclick="settingsEndpoints(<?php echo $i ?>, '<?php echo $urlBase ?>', [{ endpoint: 'action', queries: [{ query: 'aK', value: 'aaaaaaaaaaK',action: {type: 'jsonPC',actions: {comment_status: false,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'bK', value: 'bbbbbbbbK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }, { query: 'cK', value: 'cccccccccK',action: {type: 'jsonPC',actions: {comment_status: true,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'sK', value: 'sssssssK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }] }])">Edit Queries</button>
+                        <button onclick="settingsEndpoints(<?php echo $i ?>, 'Name Api','<?php echo $urlBase ?>', [{ endpoint: 'action', queries: [{ query: 'aK', value: 'aaaaaaaaaaK',action: {type: 'jsonPC',actions: {comment_status: false,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'bK', value: 'bbbbbbbbK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }, { query: 'cK', value: 'cccccccccK',action: {type: 'jsonPC',actions: {comment_status: true,post_author: [{type:'string', value:'names:author'}],post_category: [{type: 'Array String', value: 'categories?names:category_name'}, {type: 'String', value: 'category'}],post_content: [{type: 'String', value: 'content'}, {type: 'Array String', value: 'contents?title'}, {type: 'Array String', value: 'contents?value'}],post_name: [{type: 'String', value: 'name'}],post_title: [{type: 'String', value: 'title'}],post_type: {type: 'String', value: 'type'},featured_image: 'content:portal_image',post_status: {type: 'String', value: 'status'}}} }, { query: 'sK', value: 'sssssssK',action: {type: 'saveImage',actions: {name: 'claksnc:cas',save: true}} }] }])">Edit Queries</button>
                     </div>
                 </div>
             <?php
@@ -44,6 +42,7 @@ enum Suit
             ?>
         </div>
     </div>
+    <br>
     <div class="endpoints" id="initd" style="display: none; margin: 15px;">
         <h3>Endpoints:</h3>
         <div></div>
@@ -79,6 +78,37 @@ enum Suit
                             </label>
                         </div>
 
+                    <?php
+                    } else if ($apE === "next") {
+                    ?>
+                        <div class="postype config dynamic <?php echo $apE ?>">
+                            <i title="Arrow for <?php echo $apE ?>" class="material-icons arrowX despla <?php echo $apE ?>">keyboard_arrow_right</i>
+                            <h4><?php echo $apE ?>?</h4>
+                            <div class="content postype config arrow_<?php echo $apE ?>" style="display: none">
+                                <h2><?php echo $apE ?>?</h2>
+                                <h3>When creating the post should we call a next page?</h3>
+                                <label>
+                                    Where we find the next in the json?
+                                </label>
+                                <div>
+                                    <div class="multiples_json_properties_configurations_<?php echo $apE ?>" style="margin:5px;">
+                                        <label title="Only properties of type string can be" for="json_configuration_<?php echo $apE ?>_posttype_create_type" style="margin:5px;">
+                                            Type
+                                        </label>
+                                        <input title="Only properties of type string can be" name="json_configuration_<?php echo $apE ?>_posttype_create_type" id="json_configuration_<?php echo $apE ?>_posttype_create_type" value="String" disabled>
+
+                                        <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_<?php echo $apE ?>_posttype_create_name" style="margin:5px;">
+                                            Name
+                                        </label>
+                                        <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_<?php echo $apE ?>_posttype_create_name" id="json_configuration_<?php echo $apE ?>_posttype_create_name">
+                                        <label class="content-input" for="url_complete_q" style="margin: 10px">
+                                            <input type="checkbox" name="url_complete_q" id="url_complete_q">Is the URL complete?
+                                            <i></i>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     <?php
                     } else if ($apE === "post_status") {
                     ?>
@@ -210,18 +240,18 @@ enum Suit
         </div>
         <div class="image val" style="display: none;">
             <form action="" method="post">
-                <div class="postype config dynamic <?php echo $apE ?>">
-                    <i title="Arrow for <?php echo $apE ?>" class="material-icons arrowX despla <?php echo $apE ?>">keyboard_arrow_right</i>
-                    <h4><?php echo $apE ?></h4>
-                    <div class="content postype config arrow_<?php echo $apE ?>" style="display: none">
-                        <h2><?php echo $apE ?></h2>
-                        <h3>What key of the json of the response will be in the <?php echo $apE ?></h3>
-                        <p>Note: the properties that you add will be attached to the post in that same order</p>
+                <div class="postype config dynamic save-image">
+                    <i title="Arrow for save-image" class="material-icons arrowX despla save-image">keyboard_arrow_right</i>
+                    <h4>Save Image</h4>
+                    <div class="content postype config arrow_save-image" style="display: none">
+                        <h2>Save Image</h2>
+                        <h3>What Key of the json of the response will be in the save image</h3>
+                        <p>Note: The images will be saved in the root path by default of wordpress</p>
                         <label>
-                            How many keys will be used here <input id="input_number_types_<?php echo $apE ?>" type="number" value="0">
+                            How many keys will be used here <input id="input_number_types_save-image" type="number" value="0">
                         </label>
                         <div>
-                            <div class="multiples_json_properties_configurations_<?php echo $apE ?>" style="margin:5px;"></div>
+                            <div class="multiples_json_properties_configurations_save-image" style="margin:5px;"></div>
                         </div>
                     </div>
                 </div>
@@ -234,7 +264,7 @@ enum Suit
 
 <script>
     let postTypeAttributesWAl = ["post_author", "post_name", "post_title", "post_content", "post_category"];
-    let postTypeAttributes = ["post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image"]
+    let postTypeAttributes = ["post_author", "post_name", "post_title", "post_content", "post_status", "post_type", "post_category", "featured_image", "next"]
 
     postTypeAttributesWAl.forEach(el => {
         let optionSelect;
@@ -378,11 +408,14 @@ enum Suit
         postTypeContainer.style.display = "none"
     }
 
-    function settingsEndpoints(id, urlBase, endpoints) {
+    function settingsEndpoints(id, nameApi, urlBase, endpoints) {
         let containerEndpoint = document.querySelector(".endpoints#initd");
         let containerDivEndpoint = document.querySelector(".endpoints#initd div");
+        let containerH3Endpoint = document.querySelector(".endpoints#initd h3");
 
         let elementEndpoints = ``;
+
+        containerH3Endpoint.innerHTML = `Endpoints for ${nameApi}:`
 
         endpoints.forEach((e, index) => {
             let endpointNameProv = e.endpoint
@@ -580,6 +613,43 @@ enum Suit
             }
         `
     }
+</script>
+
+<script>
+    let countSaveImageValue = 0
+    document.querySelector(".material-icons.arrowX.despla.save-image").addEventListener("click", (e) => {
+        if (countSaveImageValue > 1) {
+            countSaveImageValue = 0
+        }
+        if (countSaveImageValue == 0) {
+            document.querySelector(`.content.postype.config.arrow_save-image`).style.display = 'block'
+            e.target.innerHTML = "keyboard_arrow_down"
+        } else {
+            document.querySelector(`.content.postype.config.arrow_save-image`).style.display = 'none'
+            e.target.innerHTML = "keyboard_arrow_right"
+        }
+        countSaveImageValue++
+        console.log(countSaveImageValue)
+    })
+
+    document.querySelector("#input_number_types_save-image").addEventListener("change", (e) => {
+        let number = e.target.value
+        let addElements = "";
+        for (let index = 0; index < number; index++) {
+            addElements += `<div class="inputs_dynamic_json">
+                        <label title="You can only add url of type String" for="json_configuration_save-image_posttype_${index}" style="margin:5px;">
+                            Type
+                        </label>
+                        <input title="You can only add url of type String" name="json_configuration_save-image_posttype_create_type_${index}" id="json_configuration_save-image_posttype_create_type_${index}" value="String" disabled>
+                        <label title="If there are levels deep use the ':' like this: 'properties:action:remember'" for="json_configuration_save-image_posttype_create_name_${index}" style="margin:5px;">
+                            Name
+                        </label>
+                        <input title="If there are levels deep use the ':' like this: 'properties:action:remember'" type="text" name="json_configuration_save-image_posttype_create_name_${index}" id="json_configuration_save-image_posttype_create_name_${index}">
+                    </div>`
+        }
+
+        document.querySelector(".multiples_json_properties_configurations_save-image").innerHTML = addElements
+    })
 </script>
 
 <style>
