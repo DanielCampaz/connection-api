@@ -1,11 +1,9 @@
 <?php
 require_once dirname(__FILE__, 2) . '\const\const.php';
-if($_POST && $_POST["type_form_request"] ){
-    if($_POST["type_form_request"] === "edit"){
-
-    }else if($_POST["type_form_request"] === "add"){
-        
-    }
+if($_POST && array_key_exists("type_form_request", $_POST)){
+    // if($_POST["type_form_request"] === "edit"){
+    // }else if($_POST["type_form_request"] === "add"){ 
+    // }
     print_r($_POST);
 }
 
