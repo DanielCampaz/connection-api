@@ -2,8 +2,6 @@
 require_once dirname(__FILE__, 2) . '\class\line.php';
 require_once dirname(__FILE__, 2) . '\class\backupaction.php';
 require_once dirname(__FILE__, 2) . '\functions\functions.php';
-require_once dirname(__FILE__, 2) . '\const\const.php';
-
 ?>
  
 <!DOCTYPE html>

@@ -1,10 +1,13 @@
 <?php
     require_once dirname(__FILE__, 2) . '\const\const.php';
+    require_once dirname(__FILE__, 2) . '\class\api.php';
+
     if($_POST && array_key_exists("type_form", $_POST)){
         if($_POST["type_form"] === "edit"){
              print_r($_POST);
         }else if($_POST["type_form"] === "add"){
-            print_r($_POST);
+            $api = Api::Instance($_POST);
+            print_r($api);
         }
     }
 ?>

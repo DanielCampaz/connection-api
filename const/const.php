@@ -1,5 +1,6 @@
 <?php
 global $wp;
+require_once dirname(__FILE__, 2) . '\class\DB\db.php';
 $host = home_url( add_query_arg( array(), $wp->request ) ); 
 
 $FOLDER_NAME = "smartapi-connect";
@@ -13,3 +14,4 @@ $NAME_APPLICATION_REQUEST = "Request";
 $GUIDE_REQUEST = "In this section you can add or edit the queries of your api";
 $NAME_APPLICATION_TODO = "To Do";
 $GUIDE_TODO = "In this section you can change everything that the api does";
+

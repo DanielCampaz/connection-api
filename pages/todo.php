@@ -382,7 +382,7 @@ $endpointS = "[
                         <h3>What Key of the json of the response will be in the save image</h3>
                         <p>Note: The images will be saved in the root path by default of wordpress</p>
                         <label>
-                            How many keys will be used here <input id="input_number_types_save-image" type="number" value="0">
+                            How many keys will be used here <input id="input_number_types_save-image" name="input_number_types_save-image" type="number" value="0">
                         </label>
                         <div>
                             <div class="multiples_json_properties_configurations_save-image" style="margin:5px;"></div>

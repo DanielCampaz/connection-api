@@ -21,6 +21,13 @@ function Active()
     $config_content = file_get_contents($config_path);
     $new_config_content = str_replace("/* That's all, stop editing! Happy blogging. */", "define('DISABLE_WP_CRON', true);\n\n/* That's all, stop editing! Happy blogging. */", $config_content);
     file_put_contents($config_path, $new_config_content);
+    include ".\class\DB\provider\provider.php";
+    include ".\class\DB\provider\dbtables.php";
+    include ".\class\api.php";
+    $dbtables = DBTABLES::Instance();
+    $dbtables->Add(DBNAMES::API, Api::getTable());
+    $providerDB_instance = ProviderDB::Instance();
+    $providerDB_instance->CreateDataTables();
 
 }
 

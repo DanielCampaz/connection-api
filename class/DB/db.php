@@ -4,45 +4,49 @@
 
     private $wpdb_c;
     private $name_table;
+    private $sql;
 
     public function __construct($tablename){
         global $wpdb;
         $this->wpdb_c = $wpdb;
-        $this->name_table = $tablename;
+        $this->name_table = strtolower($tablename);
     }
 
-
+    public function Set_TableSql(string $_sql) {
+        $this->sql = $_sql;
+    }
     public function Execute($sql){
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql);
     }
 
-    public function Prefix(){
-        return $this->wpdb_c->prefix;
-    }
-
     public function TableName(){
-        return $this->Prefix() . $this->name_table;
+        return $this->wpdb_c->prefix . "_smart_api_connect_" . $this->name_table;
     }
 
     public function Charset_Collate(){
         return $this->wpdb_c->get_charset_collate();
     }
 
-    public function CreateTableSql( $sql){
+    public function CreateTableSql(){
 
         $charset_collate = $this->Charset_Collate();
 
-        $sqlF = "CREATE TABLE" . $this->TableName() . $sql . $charset_collate . "";
+        $sqlF = "CREATE TABLE " . $this->TableName(). " " . $this->sql  . " " . $charset_collate . "";
 
         $this->Execute($sqlF);
+        $success = empty($this->wpdb_c->last_error);
+        print_r($success);
+        print_r($sqlF);
     }
 
-    public function InsertDataSql( $content){
+    public function InsertDataSql($content): int{
         $this->wpdb_c->insert(
             $this->TableName(),
             $content
         );
+
+        return $this->wpdb_c->insert_id;
     }
 
     public function GetDataSql( $v, $fs, $value){

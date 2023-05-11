@@ -6,7 +6,7 @@
 ### Requirements:
 ```
 PHP >= 8
-Wordpress >=7
+Wordpress >= 7
 ```
 
 # Developed by Daniel Steven Campaz Ocoro
